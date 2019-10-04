@@ -15,3 +15,11 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+
+foto_event/
+foto_admin/
+foto_anggota/
+foto_forum/
+foto_project/
+foto_training/
+foto_unggah_karya

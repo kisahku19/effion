@@ -142,7 +142,13 @@ class Front extends CI_Controller
     {
         $config['upload_path']          = './foto_anggota/';
         $config['allowed_types']        = 'gif|jpg|png';
-        echo "<pre>";
+        
+        //cek confirm password
+        if ($this->input->post('password')<>$this->input->post('confirm_password')) {
+            $this->session->set_flashdata('pesan', 'PENDAFTARAN GAGAL || Email Sudah Terdaftar');
+            redirect('front/register', 'refresh');
+        }
+        
         //cek email
         $email = $this->db->where('email', $this->input->post('email'))->get('anggota')->row();
 

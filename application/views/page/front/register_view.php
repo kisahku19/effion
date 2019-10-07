@@ -26,14 +26,43 @@
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon icon-lock"></i></span>
-                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                <input type="password" class="form-control" placeholder="Password" id="password" name="password" onkeyup='check();' required>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="icon icon-lock"></i></span>
+                <input type="password" class="form-control" placeholder="Confirm Password" id="confirm_password" name="confirm_password" onkeyup='check();' required>
+            </div>
+            <div id="message" class="input-group">
+                <span class="input-group-addon"><i class="icon icon-lock"></i></span>
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon icon-file-check"></i></span>
                 <input type="file" class="form-control" name="file" required>
             </div>
-            <button type="submit" class="c-btn">Registrasi</button>
+            <button type="submit" id="btn_submit" class="c-btn">Registrasi</button>
         </div>
         </form>
     </div>
 </div>
+
+<script>
+var check = function() {
+  if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'Password Match';
+    document.getElementById("btn_submit").disabled = false;
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'Password Not Match';
+    document.getElementById("btn_submit").disabled = true;
+  }
+}
+
+$('html').bind('keypress', function(e)
+{
+   if(e.keyCode == 13)
+   {
+      return false;
+   }
+});
+</script>

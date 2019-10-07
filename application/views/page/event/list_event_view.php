@@ -34,6 +34,9 @@ function limit_words($string, $word_limit){
                             AGENDA EVENT
                         </th>
                         <th>
+                            KATEGORI EVENT
+                        </th>
+                        <th>
                             TANGGAL
                         </th>
                         <th>
@@ -52,6 +55,7 @@ function limit_words($string, $word_limit){
                         <td><strong><?= $value->nama_event ?></strong></td>
                         <td><?php $limited_string = limit_words($value->isi_event, 10);
                         echo $limited_string; ?></td>
+                        <td><?= $value->nama_kategori ?></td>
                         <td><?= $value->tanggal ?></td>
                         <td><a href="<?= base_url() ?>foto_event/<?= $value->gambar ?>"><img src="<?= base_url() ?>foto_event/<?= $value->gambar ?>" class="img img-thumbnail" style="width:100px;"></a></td>
                         <td>

@@ -9,6 +9,7 @@ class event extends HSM_Conttroller{
         parent::__construct();
         $this->cek_login();
         $this->load->model('event_model');
+        $this->load->model('kategori_model');
     }
 
     public function index(){
@@ -37,6 +38,7 @@ class event extends HSM_Conttroller{
             'id_admin' => $_SESSION['id_admin'],
             'nama_event' => $this->input->post('nama_event'),
             'isi_event' => $this->input->post('isi_event'),
+            'id_kategori' => $this->input->post('id_kategori'),
             'tanggal' => $this->input->post('tanggal')
         );
         if (!empty($id)) {
@@ -79,6 +81,9 @@ class event extends HSM_Conttroller{
     }
 
     function form_event($id=null){
+        
+        $data['kategori'] = $this->kategori_model->get_all_kategori();
+
         if (!empty($id)) {
             $data['title'] = 'Edit Event';
             $data['detail_event'] = $this->event_model->get_event_by_id($id);

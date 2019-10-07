@@ -34,6 +34,23 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="" class="col-md-3">KATEGORI</label>
+                        <div class="col-md-5">
+                            <select name="id_kategori">
+                                <option value="">---Pilih Kategori---</option>
+                                <?php 
+                                    foreach ($kategori as $key=>$val){ ?>
+                                        <option value="<?=$val->id_kategori?>" <?php
+                                                                if (!empty($detail_event) && $detail_event->id_kategori == $val->id_kategori) {
+                                                                    echo "selected";
+                                                                }
+                                                                ?>><?=$val->nama_kategori?></option>
+                                    <?php }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="" class="col-md-3">TANGGAL</label>
                         <div class="col-md-5">
                             <input type="text" placeholder="10 juni 1988" name="tanggal" id="tanggal" class="form-control" value="<?php

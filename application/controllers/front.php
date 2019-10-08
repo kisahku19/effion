@@ -47,7 +47,11 @@ class Front extends CI_Controller
     function event()
     {
         $data['title'] = 'Event';
-        $data['all_event'] = $this->event_model->get_all_event();
+        $all_event = $this->event_model->get_all_event();
+        $all_event = json_decode(json_encode($all_event), true);
+        foreach ($all_event as $element) {
+            $data['all_event'][$element['nama_kategori']][] = $element;
+        }
         $data['content'] = 'page/front/event_view';
         $this->load->view('page/front/component/wrapper', $data);
     }

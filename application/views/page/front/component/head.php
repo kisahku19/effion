@@ -118,5 +118,6 @@
 	<script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/pickers/pickadate/picker.time.js"></script>
 	<script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/pickers/pickadate/legacy.js"></script>
 
-	<script id="domain" data-name="6145876" type="text/javascript" src="http://localhost/aplikasi/sitespy/js/analytics_js/client.js"></script>
+	<script id="domain" data-name="6145876" type="text/javascript" src="<?= base_url() ?>sitespy/js/analytics_js/client.js"></script>
+	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/front/css/update.css" />
 </head>

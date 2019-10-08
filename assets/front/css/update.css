@@ -1,0 +1,10 @@
+.kategori-title {
+    border-top: 1px solid rgba(0,0,0,0.3);
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 99999;
+    background: #efefef;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}

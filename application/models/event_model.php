@@ -8,7 +8,8 @@ class Event_model extends CI_Model{
         $this->db->from('event');
         $this->db->join('admin', 'event.id_admin = admin.id_admin');
         $this->db->join('kategori', 'event.id_kategori = kategori.id_kategori','left');
-        $this->db->order_by('id_event', 'DESC');
+        //$this->db->order_by('id_event', 'DESC');
+        $this->db->order_by('id_kategori');
         $hasil = $this->db->get()->result();
         return $hasil;
     }

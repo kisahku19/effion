@@ -180,7 +180,7 @@ class Front extends CI_Controller
             'no_hp' => $this->input->post('phone'),
             'domisili' => $this->input->post('domisili'),
             'username' => $this->input->post('username'),
-            'password' =>  $this->input->post('password')
+            'password' =>  md5($this->input->post('password'))
         );
         
         if ($this->upload->do_upload('file')) {

@@ -160,17 +160,19 @@ class Front extends CI_Controller
         //cek no hp
         $phone = $this->db->where('no_hp', $this->input->post('phone'))->get('anggota')->row();
 
-
-        if ($email->email) {
+        
+        if (empty($email->email)) {
+        }else{
             $this->session->set_flashdata('pesan', 'PENDAFTARAN GAGAL || Email Sudah Terdaftar');
             redirect('front/register', 'refresh');
         }
+        if (empty($phone->no_hp)) {
 
-        if ($phone->no_hp) {
+        }else{
             $this->session->set_flashdata('pesan', 'No Handphone Sudah Terdaftar');
             redirect('front/register', 'refresh');
         }
-
+        
         $this->load->library('upload', $config);
         $data_arr = array(
             'nama_lengkap' => $this->input->post('nama_lengkap'),
@@ -180,7 +182,7 @@ class Front extends CI_Controller
             'username' => $this->input->post('username'),
             'password' =>  $this->input->post('password')
         );
-
+        
         if ($this->upload->do_upload('file')) {
             $data_arr['gambar'] = $this->upload->data('file_name');
             $this->db->insert('anggota', $data_arr);

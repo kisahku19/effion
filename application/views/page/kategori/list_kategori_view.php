@@ -16,12 +16,12 @@
                         <th>
                             NAMA KATEGORI
                         </th>
-                        <th>
+                        <!-- <th>
                             Created Date
                         </th>
                         <th>
                             Updated Date
-                        </th>
+                        </th> -->
                         <th>
                             AKSI
                         </th>
@@ -33,8 +33,8 @@
                         <tr>
                             <td><?= $i ?></td>
                             <td><?= $value->nama_kategori ?></td>
-                            <td><?= $value->created_at ?></td>
-                            <td><?= $value->updated_at ?></td>
+                            <!-- <td><?= $value->created_at ?></td>
+                            <td><?= $value->updated_at ?></td> -->
                             <td>
                                 <div class="btn-group btn-group-xs">
                                     <a href="<?= base_url() ?>kategori/form_kategori/<?= $value->id_kategori ?>" class="btn btn-primary"><i class="icon icon-pencil"></i></a>

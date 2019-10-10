@@ -18,7 +18,7 @@
             columnDefs: [{
                 orderable: false,
                 width: '150px',
-                targets: [4]
+                targets: [1]
             }],
             dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
             language: {

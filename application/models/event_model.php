@@ -15,7 +15,7 @@ class Event_model extends CI_Model{
     }
 
     function get_event_by_id($id){
-        $this->db->select('event.id_event, event.id_admin, admin.nama_admin, event.nama_event,DATE_FORMAT(event.tanggal, "%d %M %Y") as tanggal, event.isi_event, event.gambar, event.rating,kategori.nama_kategori,event.id_kategori');
+        $this->db->select('event.id_event, event.id_admin, admin.nama_admin, event.nama_event,event.tanggal, event.isi_event, event.gambar, event.rating,kategori.nama_kategori,event.id_kategori');
         $this->db->from('event');
         $this->db->join('admin', 'event.id_admin = admin.id_admin');
         $this->db->join('kategori', 'event.id_kategori = kategori.id_kategori','left');

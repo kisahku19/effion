@@ -10,6 +10,7 @@ class event extends HSM_Conttroller{
         $this->cek_login();
         $this->load->model('event_model');
         $this->load->model('kategori_model');
+        $this->load->model('forum_model');
     }
 
     public function index(){
@@ -41,6 +42,14 @@ class event extends HSM_Conttroller{
             'id_kategori' => $this->input->post('id_kategori'),
             'tanggal' => $this->input->post('tanggal')
         );
+
+        $data_forum = array(
+            'nama' => $this->input->post('nama_event'),
+            'judul_forum' => $this->input->post('nama_event'),
+            'tanggal' => date('Y-m-d'),
+            'isi_forum' => $this->input->post('isi_event')
+        );
+
         if (!empty($id)) {
             if ($this->upload->do_upload('gambar')) {
                 $data_arr['gambar'] = $this->upload->data('file_name');
@@ -62,6 +71,17 @@ class event extends HSM_Conttroller{
             if ($this->upload->do_upload('gambar')) {
                 $data_arr['gambar'] = $this->upload->data('file_name');
                 if ($this->event_model->insert_event($data_arr)) {
+                    $id_event = $this->db->insert_id();
+                    //create forum for comment
+                    $data_forum['gambar'] = $data_arr['gambar'];
+                    $this->forum_model->insert_forum($data_forum);
+                    $id_forum = $this->db->insert_id();
+                    //end create forum for comment
+
+                    //update add forum_id to event table
+                    $data_update = array('id_forum'=>$id_forum);
+                    $this->event_model->update_event($id_event, $data_update);
+                    //end update add forum_id to event table
                     $this->session->set_flashdata('pesan', 'Event berhsail di tambahkan');
                     redirect('event', 'refresh');
                 }else {
@@ -70,6 +90,17 @@ class event extends HSM_Conttroller{
                 }
             }else{
                 if ($this->event_model->insert_event($data_arr)) {
+                    $id_event = $this->db->insert_id();
+                    //create forum for comment
+                    $this->forum_model->insert_forum($data_forum);
+                    $id_forum = $this->db->insert_id();
+                    //end create forum for comment
+
+                    //update add forum_id to event table
+                    $data_update = array('id_forum'=>$id_forum);
+                    $this->event_model->update_event($id_event, $data_update);
+                    //end update add forum_id to event table
+
                     $this->session->set_flashdata('pesan', 'Event berhasil di tambahkan');
                     redirect('event', 'refresh');
                 }else {

@@ -33,3 +33,7 @@ COMMIT;
 ===== update menu =====
 INSERT INTO `tbl_menu` (`id_menu`, `label`, `link`, `icon`, `grup`, `parent`, `sort`) VALUES (NULL, 'Kategori', 'kategori', 'icon-price-tags', 'admin', '0', '7');
 ===== end update menu =====
+
+===== event and forum relation ====
+ALTER TABLE `event` ADD `id_forum` INT NOT NULL AFTER `id_kategori`;
+===== end event and forum relation ====

@@ -31,9 +31,9 @@ if (isset($_SESSION['nama_anggota'])) { ?>
             <li class="dropdown active">
                 <a class="dropdown-toggle" href="<?= base_url()?>front/unggah_karya">Unggah Karya</a>
             </li>
-            <li class="dropdown active">
+            <!--li class="dropdown active">
                 <a class="dropdown-toggle" href="<?= base_url()?>front/forum">Forum</a>
-            </li>
+            </li-->
         </ul>
     </nav>
 <?php }

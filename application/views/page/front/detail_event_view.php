@@ -120,9 +120,15 @@
                             </div>
                         </div>
                         <div class="col-md-5 comment-content">
+                            <?php if (isset($_SESSION['username_anggota'])) { ?>
                             <span>
                                 <a class="button_style2" data-toggle="modal" href='#<?= $value->id_komentar_forum ?>'>Balas</a>
                             </span>
+                            <?php } else { ?>
+                            <span>
+                                <a class="button_style2"href='<?= base_url()?>front/login'>Balas</a>
+                            </span>
+                            <?php } ?>
                         </div>
                     </div>
                     <form method="post" action="<?= base_url('komentar/balas_komentar_event/' . $detail_event->id_event) ?>">
@@ -153,16 +159,22 @@
     <!-- Post Comments-->
 
     <!-- Post Comment form -->
+    <?php //if (isset($_SESSION['username_anggota'])) { ?>
     <div class="col-md-12 comment-form">
         <div class="comment-head">Tulis Komentar:</div>
         <form method="post" action="<?= base_url('front/buat_komentar_event/'. $detail_event->id_event) ?>">
             <div class="row">
                 <div class="col-md-12">
                     <input type="hidden" value="<?= $detail_forum->id_forum ?>" name="id_forum">
-                    <textarea class="form-control" id="addComment" rows="8" placeholder="your message" name="isi_komentar"></textarea>
-                    <button type="submit" class="button_style1">Kirim Komentar</button>
+                    <textarea class="form-control" <?php if (!isset($_SESSION['username_anggota'])) { echo "disabled"; }?> id="addComment" rows="8" placeholder="your message" name="isi_komentar"></textarea>
+                    <?php if (isset($_SESSION['username_anggota'])) { ?>
+                        <button type="submit" class="button_style1">Kirim Komentar</button>
+                    <?php } else { ?>
+                        <button type="submit" href="<?= base_url()?>front/login" class="button_style1">Login</button>
+                    <?php } ?>
                 </div>
             </div>
         </form>
     </div>
+    <?php //} ?>
 </div>

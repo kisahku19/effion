@@ -92,7 +92,10 @@
 				'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
 				'save table contextmenu directionality emoticons template paste textcolor'
 			],
-			height: '150'
+			height: '150',
+			<?php if (!isset($_SESSION['username_anggota'])) { ?>
+			readonly : 1
+			<?php } ?>
 		});
 	</script>
 

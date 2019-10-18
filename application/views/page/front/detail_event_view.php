@@ -41,6 +41,13 @@
         }
     }
 </script>
+<style>
+.row-split {
+  #max-width: 800px;
+  margin: 0 auto;
+  column-width: 35em;
+}
+</style>
 <div class="row">
     <div class="col-md-8">
         <div id="portfolio-slider" class="flexslider">
@@ -77,7 +84,7 @@
     </div>
 </div>
 <p></p>
-<div class="row">
+<div class="row row-split">
     <div class="col-md-12">
         <div class="project-info-detail"><br>
             <h3>Isi Event</h3><br>
@@ -101,7 +108,7 @@
                                 <?= $value->isi_komentar ?><br>
                             </div>
                             <div>
-                                <?php $balasan = $this->db->where(['id_forum' => $detail_forum->id_forum, 'id_parent_komentar_forum' => $value->id_komentar_forum])->get('komentar_forum'); ?>
+                                <?php $balasan = $this->db->where(['id_forum' => $detail_forum->id_forum, 'id_parent_komentar_forum' => $value->id_komentar_forum])->order_by('waktu','desc')->get('komentar_forum'); ?>
                                 <?php if ($balasan->num_rows() > 0) : ?>
                                     <br>
                                     <h5><b>Balasan:</h5></b>

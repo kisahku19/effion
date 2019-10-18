@@ -95,9 +95,14 @@
 <div class="row">
     <div class="col-md-12 no-padding comments">
         <div class="comment-head"><?= $jumlah_comment ?> Komentar</div>
-        <?php if ($jumlah_comment > 0) { ?>
-            <?php foreach ($list_comment as $value) { ?>
-                <?php if ($value->id_parent_komentar_forum == 0) { ?>
+        <?php if ($jumlah_comment > 0) { 
+            $j=1;
+            ?>
+            <?php foreach ($list_comment as $value) { 
+                if($j==4){ ?>
+                    <div id="parshowhide" style="display:none">
+                <?php }
+                ?>
                     <div class="comment-content-main">
                         <div class="col-md-7 comment-content">
                             <div class="comment-meta">
@@ -117,9 +122,6 @@
                                     $i=1;
                                     $display='';
                                     foreach ($balasan->result() as $key => $balas) : 
-                                        if($i>3) {
-                                            $display='display: none;';
-                                        }
                                         if($i==4) {
                                     ?>
                                         <div id="showhide-<?=$value->id_komentar_forum?>" style="display:none">
@@ -180,9 +182,20 @@
                             </div>
                         </div>
                     </form>
-                <?php } ?>
-            <?php  } ?>
-        <?php } else { }
+            <?php $j++; } ?>
+            <?php if($jumlah_comment>3) { ?>
+                                    </div>
+                                    <?php } ?>
+            <?php if($jumlah_comment>3) { ?>
+                <div class="row">
+            <div class="col-md-7 comment-content" style="margin-left:18px;">
+                <span>
+                    <button class="button_style1" id="button_parshowhide" onclick="showComment()">Selengkapnya....</button>
+                </span>
+            </div>
+            </div><br>
+            <?php } ?>
+        <?php } 
         ?>
     </div>
     <!-- Post Comments-->
@@ -211,11 +224,25 @@
 function showBalasan(id) {
   var x = document.getElementById("showhide-"+id);
   if (x.style.display === "none") {
-    x.style.display = "block";
+    //x.style.display = "block";
+    $("#showhide-"+id).show(2000);
     document.getElementById('button_showhide-'+id).innerText = 'Tutup';
   } else {
-    x.style.display = "none";
+    //x.style.display = "none";
+    $("#showhide-"+id).hide(2000);
     document.getElementById('button_showhide-'+id).innerText = 'Selengkapnya....';
+  }
+}
+function showComment() {
+  var x = document.getElementById("parshowhide");
+  if (x.style.display === "none") {
+    //x.style.display = "block";
+    $("#parshowhide").show(2000);
+    document.getElementById('button_parshowhide').innerText = 'Tutup';
+  } else {
+    //x.style.display = "none";
+    $("#parshowhide").hide(2000);
+    document.getElementById('button_parshowhide').innerText = 'Selengkapnya....';
   }
 }
 </script>

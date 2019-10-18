@@ -211,7 +211,7 @@ class Front extends CI_Controller
         }
         $data['detail_forum'] = $this->forum_model->get_forum_by_id($hasil->id_forum);
         $data['jumlah_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0])->get('komentar_forum')->num_rows();
-        $data['list_comment'] = $this->db->where('id_forum', $hasil->id_forum)->order_by('waktu','desc')->get('komentar_forum')->result();
+        $data['list_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0])->order_by('waktu','desc')->get('komentar_forum')->result();
         $data['title'] = 'Detail Event';
         $data['content'] = 'page/front/detail_event_view';
         $this->load->view('page/front/component/wrapper', $data);

@@ -113,7 +113,17 @@
                                     <br>
                                     <h5><b>Balasan:</h5></b>
                                     <hr>
-                                    <?php foreach ($balasan->result() as $key => $balas) : ?>
+                                    <?php 
+                                    $i=1;
+                                    $display='';
+                                    foreach ($balasan->result() as $key => $balas) : 
+                                        if($i>3) {
+                                            $display='display: none;';
+                                        }
+                                        if($i==4) {
+                                    ?>
+                                        <div id="showhide-<?=$value->id_komentar_forum?>" style="display:none">
+                                        <?php } ?>
                                         <div class="panel panel-success" style="margin-left:30px;">
                                             <div class="panel-body" style="vertical_align:middle;">
                                                 <span style="font-size:21px;font-family:bitter;"><?= $balas->nama ?></span>
@@ -122,9 +132,21 @@
                                                 <?= $balas->isi_komentar ?>
                                             </div>
                                         </div>
-                                    <?php endforeach; ?>
+                                    <?php 
+                                    $i++;
+                                    endforeach; ?>
+                                    <?php if($balasan->num_rows()>3) { ?>
+                                    </div>
+                                    <?php } ?>
                                 <?php endif; ?>
                             </div>
+                            <?php if($balasan->num_rows()>3) { ?>
+                            <div class="col-md-7 comment-content" style="margin-left:18px;">
+                                <span>
+                                    <button class="button_style1" id="button_showhide-<?=$value->id_komentar_forum?>" onclick="showBalasan(<?=$value->id_komentar_forum?>)">Selengkapnya....</button>
+                                </span>
+                            </div>
+                            <?php } ?>
                         </div>
                         <div class="col-md-5 comment-content">
                             <?php if (isset($_SESSION['username_anggota'])) { ?>
@@ -185,3 +207,15 @@
     </div>
     <?php //} ?>
 </div>
+<script>
+function showBalasan(id) {
+  var x = document.getElementById("showhide-"+id);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    document.getElementById('button_showhide-'+id).innerText = 'Tutup';
+  } else {
+    x.style.display = "none";
+    document.getElementById('button_showhide-'+id).innerText = 'Selengkapnya....';
+  }
+}
+</script>

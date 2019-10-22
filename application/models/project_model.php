@@ -13,7 +13,7 @@ class Project_model extends CI_Model{
     }
 
     function get_project_by_id($id){
-        $this->db->select('project.id_project, project.id_admin, admin.nama_admin, project.nama_channel, DATE_FORMAT(project.tanggal, "%d %M %Y") as tanggal, project.isi_project, project.video, project.rating');
+        $this->db->select('project.id_project, project.id_admin, admin.nama_admin, project.nama_channel, project.tanggal as tanggal, project.isi_project, project.video, project.rating');
         $this->db->from('project');
         $this->db->join('admin', 'project.id_admin = admin.id_admin');
         $this->db->where('id_project', $id);

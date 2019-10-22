@@ -76,7 +76,7 @@
                 echo "</ul>";
                 ?>
             </div>
-            <h5>Tanggal : <?= $detail_event->tanggal ?></h5>
+            <h5>Tanggal : <?= date("d-F-Y", strtotime($detail_event->tanggal)) ?></h5>
             <h5>Dibuat Oleh : <?= $detail_event->nama_admin ?></h5>
             <h5>Kategori Event : <?= $detail_event->nama_kategori ?></h5>
 

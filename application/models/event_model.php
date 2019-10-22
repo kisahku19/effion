@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Event_model extends CI_Model{
 
     function get_all_event(){
-        $this->db->select('event.id_event, event.id_admin, admin.nama_admin, event.nama_event,DATE_FORMAT(event.tanggal, "%d %M %Y") as tanggal, event.isi_event, event.gambar,kategori.nama_kategori,event.id_kategori');
+        $this->db->select('event.id_event, event.id_admin, admin.nama_admin, event.nama_event,DATE_FORMAT(event.tanggal, "%d %M %Y") as tanggal, event.isi_event, event.gambar,kategori.nama_kategori,event.id_kategori,(select count(*) from komentar_forum kf where kf.id_forum = event.id_forum) as komen');
         $this->db->from('event');
         $this->db->join('admin', 'event.id_admin = admin.id_admin');
         $this->db->join('kategori', 'event.id_kategori = kategori.id_kategori','left');

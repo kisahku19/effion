@@ -27,7 +27,7 @@ foreach($all_event as $key=>$val){
              <div class="folio-item col-md-3 isotope-item photography">
                 <div class="folio-img">
 					<img src="<?= base_url()?>foto_event/<?= $value['gambar']?>" alt="" style="width: 100%; height: 300px;"/>
-					<div class="top-right">Jumlah Komentar <?= $value['komen']?></div>
+					<div class="top-right"><a style="color: #5b5b5b;" href="<?= base_url()?>front/detail_event/<?= $value['id_event']?>#comment_section">Jumlah Komentar <?= $value['komen']?></a></div>
 					<div class="folio-info"><br>
 						<h4><a href="<?= base_url()?>front/detail_event/<?= $value['id_event']?>"><?= $value['nama_event']?></a></h4>
 						<span class="folio-date"><?= $value['tanggal']?></span>

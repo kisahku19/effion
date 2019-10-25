@@ -94,7 +94,7 @@
 </div>
 <div class="row">
     <div class="col-md-12 no-padding comments">
-        <div class="comment-head"><?= $jumlah_comment ?> Komentar</div>
+        <div class="comment-head" id="comment_section"><?= $jumlah_comment ?> Komentar</div>
         <?php if ($jumlah_comment > 0) { 
             $j=1;
             ?>

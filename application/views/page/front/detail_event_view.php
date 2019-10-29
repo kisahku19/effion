@@ -64,7 +64,7 @@
             <h5>Rating</h5>
             <div id='rate-0'>
                 <input type='hidden' name='rating' id='rating' value='<?= $detail_event->rating ?>'>
-                <ul onMouseOut="resetRating(<?= $detail_event->id_event ?>)">
+                <!--ul onMouseOut="resetRating(<?= $detail_event->id_event ?>)">
                     <?php for ($i = 1; $i <= 5; $i++) {
                         if ($i <= $detail_event->rating) {
                             $selected = "selected";
@@ -72,9 +72,26 @@
                             $selected = "";
                         } ?>
                         <li class='<?= $selected ?>' onmouseover="highlightStar(this,<?= $detail_event->id_event ?>)" onmouseout="removeHighlight(<?= $detail_event->id_event ?>);" onClick="addRating(this, <?= $detail_event->id_event ?>)">&#9733;</li>
-                    <?php    }
-                echo "</ul>";
-                ?>
+                    <?php    } ?>
+                </ul-->
+                <ul>
+                    <li class='selected' style='font-size:30px'>&#9733;</li><span style='font-size:25px'><?=$avg_rating?></span>/5 dari <?=$total_rating?> user rating
+                </ul>
+                <?php if (isset($_SESSION['username_anggota'])) { ?>
+                    <ul>
+                        <li style='font-size:30px' onClick="showRating()">&#9733;</li>Beri rating
+                    </ul>
+                <?php } else { ?>
+                    <ul>
+                        <li><a style='font-size:30px' href="<?= base_url()?>front/login">&#9733;</a></li>Beri rating
+                    </ul>
+                <?php } ?>
+                
+                <ul style="display:none" id='addRating'>
+                <?php for ($i = 1; $i <= 5; $i++) { ?>
+                        <li onmouseover="highlightStar(this,<?= $detail_event->id_event ?>)" onmouseout="removeHighlight(<?= $detail_event->id_event ?>);" onClick="addRating(this, <?= $detail_event->id_event ?>)">&#9733;</li>
+                    <?php    } ?>
+                </ul>
             </div>
             <h5>Tanggal : <?= date("d-F-Y", strtotime($detail_event->tanggal)) ?></h5>
             <h5>Dibuat Oleh : <?= $detail_event->nama_admin ?></h5>
@@ -243,6 +260,15 @@ function showComment() {
     //x.style.display = "none";
     $("#parshowhide").hide(2000);
     document.getElementById('button_parshowhide').innerText = 'Selengkapnya....';
+  }
+}
+
+function showRating() {
+  var x = document.getElementById("addRating");
+  if (x.style.display === "none") {
+    $("#addRating").show(1000);
+  } else {
+    $("#addRating").hide(1000);
   }
 }
 </script>

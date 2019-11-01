@@ -205,7 +205,7 @@ class Front extends CI_Controller
                 $sum_rating += $value->rating;
             }
 
-            $data['avg_rating'] = $sum_rating / $data['total_rating'];
+            $data['avg_rating'] = round($sum_rating / $data['total_rating'],2);
         } else {
             $data['avg_rating'] = 0;
         }
@@ -230,7 +230,7 @@ class Front extends CI_Controller
                 $sum_rating += $value->rating;
             }
 
-            $data['avg_rating'] = $sum_rating / $data['total_rating'];
+            $data['avg_rating'] = round($sum_rating / $data['total_rating'],2);
         } else {
             $data['avg_rating'] = 0;
         }
@@ -252,7 +252,7 @@ class Front extends CI_Controller
                 $sum_rating += $value->rating;
             }
 
-            $data['avg_rating'] = $sum_rating / $data['total_rating'];
+            $data['avg_rating'] = round($sum_rating / $data['total_rating'],2);
         } else {
             $data['avg_rating'] = 0;
         }
@@ -276,7 +276,7 @@ class Front extends CI_Controller
                 $sum_rating += $value->rating;
             }
 
-            $data['avg_rating'] = $sum_rating / $data['total_rating'];
+            $data['avg_rating'] = round($sum_rating / $data['total_rating'],2);
         } else {
             $data['avg_rating'] = 0;
         }

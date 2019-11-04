@@ -1,3 +1,31 @@
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+
 <script>
     function highlightStar(obj, id) {
         removeHighlight(id);
@@ -83,7 +111,24 @@
                 <ul>
                     <li class='selected' style='font-size:30px'>&#9733;</li><span style='font-size:25px'><?=$avg_rating?></span>(<?=$total_rating?>)
                 </ul>
-                <?php if (isset($_SESSION['username_anggota'])) { ?>
+                <?php if (isset($_SESSION['username_anggota'])) { 
+                        if ($cek_rating==1){ ?>
+                        <ul>
+                            <ul style="display:block" id='addRating'>
+                            <?php for ($i = 1; $i <= 5; $i++) {    
+                                if ($i <= floor($avg_rating)) {
+                                    $selected = "selected";
+                                } else {
+                                    $selected = "";
+                                }
+                            ?>
+                            <li class="<?= $selected ?>" title="Anda sudah memberikan rating">&#9733;</li>
+                            <?php    } ?>
+                        </ul>
+                    </ul>
+                <?php
+                        }else{
+                    ?>
                     <div id='rate-0'>
                     <input type='hidden' name='rating' id='rating' value='<?= $detail_event->rating ?>'>
                     <ul>
@@ -94,7 +139,9 @@
                         </ul>
                     </ul>
                     </div>
-                <?php } else { ?>
+                <?php 
+                        }
+                    } else { ?>
                     <ul>
                         <a href="<?= base_url()?>front/login">Silahkan login untuk memberi rating</a>
                         <ul style="display:block" id='addRating'>

@@ -209,6 +209,14 @@ class Front extends CI_Controller
         } else {
             $data['avg_rating'] = 0;
         }
+        if (isset($_SESSION['id_anggota'])){
+        // cek sudah rating atau belum
+            $data['cek_rating'] = $this->db->where(['id_event' => $id, 'id_anggota' => $_SESSION['id_anggota']])->get('rating_event')->num_rows();
+        // end cek
+        }else{
+            $data['cek_rating'] = 0;
+        }
+        
         $data['detail_forum'] = $this->forum_model->get_forum_by_id($hasil->id_forum);
         $data['jumlah_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0])->get('komentar_forum')->num_rows();
         $data['list_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0])->order_by('waktu','desc')->get('komentar_forum')->result();

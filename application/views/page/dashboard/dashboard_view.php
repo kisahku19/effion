@@ -5,16 +5,16 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-5">
-                        <a class="btn btn-rounded btn-icon btn-hover text-white">
+                        <a href="<?=base_url()?>anggota" class="btn btn-rounded btn-icon btn-hover text-white">
                             <i class="icon icon-users icon-3x"></i>
                         </a>
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                            Anggota
+                            <a href="<?=base_url()?>anggota" style="color:#fff">Anggota</a>
                         </div>
                         <div class="text-muted">
-                            <?= $total_anggota; ?> Orang
+                            <a href="<?=base_url()?>anggota" style="color:#fff"><?= $total_anggota; ?> Orang</a>
                         </div>
                     </div>
                 </div>
@@ -26,16 +26,16 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-5">
-                        <a class="btn btn-rounded btn-icon btn-hover text-white">
+                        <a href="<?=base_url()?>event" class="btn btn-rounded btn-icon btn-hover text-white">
                             <i class="icon icon-calendar icon-3x"></i>
                         </a>
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                            Event
+                            <a href="<?=base_url()?>event" style="color:#fff">Event</a>
                         </div>
                         <div class="text-muted">
-                            <?= $total_event ?> Event
+                            <a href="<?=base_url()?>event" style="color:#fff"><?= $total_event ?> Event</a>
                         </div>
                     </div>
                 </div>
@@ -47,16 +47,16 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-5">
-                        <a class="btn btn-rounded btn-icon btn-hover text-white icon-bordered">
+                        <a href="<?=base_url()?>project" class="btn btn-rounded btn-icon btn-hover text-white icon-bordered">
                             <i class="icon icon-grid5 icon-3x"></i>
                         </a>
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                            Project
+                            <a href="<?=base_url()?>project" style="color:#fff">Project</a>
                         </div>
                         <div class="text-muted">
-                            <?= $total_project ?> Project
+                            <a href="<?=base_url()?>project" style="color:#fff"><?= $total_project ?> Project</a>
                         </div>
                     </div>
                 </div>
@@ -69,16 +69,16 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-5">
-                        <a class="btn btn-rounded btn-icon btn-hover text-white">
+                        <a href="<?=base_url()?>training" class="btn btn-rounded btn-icon btn-hover text-white">
                             <i class="icon icon-list icon-3x"></i>
                         </a>
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                            Training
+                        <a href="<?=base_url()?>training" style="color:#fff">Training</a>
                         </div>
                         <div class="text-muted">
-                            <?= $total_training; ?> Training
+                        <a href="<?=base_url()?>training" style="color:#fff"><?= $total_training; ?> Training</a>
                         </div>
                     </div>
                 </div>
@@ -90,16 +90,16 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-5">
-                        <a class="btn btn-rounded btn-icon btn-hover text-white">
+                        <a href="<?=base_url()?>unggah_karya" class="btn btn-rounded btn-icon btn-hover text-white">
                             <i class="icon icon-accessibility icon-3x"></i>
                         </a>
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                            Karya
+                            <a href="<?=base_url()?>unggah_karya" style="color:#fff">Karya</a>
                         </div>
                         <div class="text-muted">
-                            <?= $total_karya; ?> karya
+                            <a href="<?=base_url()?>unggah_karya" style="color:#fff"><?= $total_karya; ?> karya</a>
                         </div>
                     </div>
                 </div>
@@ -111,16 +111,16 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-5">
-                        <a class="btn btn-rounded btn-icon btn-hover text-white">
+                        <a href="<?=base_url()?>forum" class="btn btn-rounded btn-icon btn-hover text-white">
                             <i class="icon icon-users4 icon-3x"></i>
                         </a>
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                            Forum
+                            <a href="<?=base_url()?>forum" style="color:#fff">Forum</a>
                         </div>
                         <div class="text-muted">
-                            <?= $total_forum; ?> Forum
+                            <a href="<?=base_url()?>forum" style="color:#fff"><?= $total_forum; ?> Forum</a>
                         </div>
                     </div>
                 </div>

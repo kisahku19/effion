@@ -4,13 +4,14 @@
             <div class="panel-heading">
                 <h5 class="panel-title">
                     <?= $title; ?>
+                    <a href="<?= base_url() ?>anggota/download_anggota/" class="btn btn-lg btn-primary pull-right">Download</a>
                 </h5>
             </div>
             <table class="table table-responsive" id="table-anggota">
                 <thead>
                     <tr>
                         <th>
-                            ID
+                            NO
                         </th>
                         <th>
                             NAMA LENGKAP

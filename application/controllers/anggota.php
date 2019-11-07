@@ -36,4 +36,43 @@ class Anggota extends HSM_Conttroller{
 
         echo json_encode($data);
     }
+
+    public function download_anggota(){
+        $this->load->library('excel');
+        $inputFileName = FCPATH.'template/download_anggota.xlsx';
+        try {
+            $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+            $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+            $objPHPExcel = $objReader->load($inputFileName);
+        } catch (Exception $e) {
+        die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME) . '": ' . 
+            $e->getMessage());
+        }
+        $objPHPExcel->setActiveSheetIndex(0);
+
+        $anggota = $this->anggota_model->get_all_anggota();
+       // print_r($anggota); exit;
+        $number = 2;
+        
+        foreach($anggota as $value) {
+
+            $objPHPExcel->getActiveSheet()->setCellValue('A'.$number, $number-1);
+            $objPHPExcel->getActiveSheet()->setCellValue('B'.$number, $value->nama_lengkap);
+            //$objPHPExcel->getActiveSheet()->setCellValue('D'.$number, $key->comapny_name);
+            $objPHPExcel->getActiveSheet()->setCellValue('C'.$number, $value->email);
+            $objPHPExcel->getActiveSheet()->setCellValue('D'.$number, $value->no_hp);
+            $objPHPExcel->getActiveSheet()->setCellValue('E'.$number, $value->domisili);
+            $objPHPExcel->getActiveSheet()->setCellValue('F'.$number, $value->username);
+            $number++;
+        }
+
+        $filename = 'data_anggota_';
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="'.$filename.'.xlsx"');
+        header('Cache-Control: max-age=0');
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save('php://output');
+    }
+
 }

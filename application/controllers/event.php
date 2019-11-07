@@ -136,4 +136,41 @@ class event extends HSM_Conttroller{
 
         echo json_encode($data);
     }
+
+    public function download_event(){
+        $this->load->library('excel');
+        $objPHPExcel = $this->excel;
+        $objPHPExcel->setActiveSheetIndex(0);
+
+        $anggota = $this->event_model->get_all_event();
+       // print_r($anggota); exit;
+        $number = 2;
+        $objPHPExcel->getActiveSheet()->setCellValue('A1', 'No');
+        $objPHPExcel->getActiveSheet()->setCellValue('B1', 'ADMIN');
+        //$objPHPExcel->getActiveSheet()->setCellValue('D'.$number, $key->comapny_name);
+        $objPHPExcel->getActiveSheet()->setCellValue('C1','EVENT');
+        $objPHPExcel->getActiveSheet()->setCellValue('D1', 'AGENDA EVENT');
+        $objPHPExcel->getActiveSheet()->setCellValue('E1','KATEGORI EVENT');
+        $objPHPExcel->getActiveSheet()->setCellValue('F1', 'TANGGAL');
+        
+        foreach($anggota as $value) {
+
+            $objPHPExcel->getActiveSheet()->setCellValue('A'.$number, $number-1);
+            $objPHPExcel->getActiveSheet()->setCellValue('B'.$number, $value->nama_admin);
+            //$objPHPExcel->getActiveSheet()->setCellValue('D'.$number, $key->comapny_name);
+            $objPHPExcel->getActiveSheet()->setCellValue('C'.$number, $value->nama_event);
+            $objPHPExcel->getActiveSheet()->setCellValue('D'.$number, $value->isi_event);
+            $objPHPExcel->getActiveSheet()->setCellValue('E'.$number, $value->nama_kategori);
+            $objPHPExcel->getActiveSheet()->setCellValue('F'.$number, $value->tanggal);
+            $number++;
+        }
+
+        $filename = 'data_event_'.date('Y-m-d H:i:S');
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="'.$filename.'.xlsx"');
+        header('Cache-Control: max-age=0');
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save('php://output');
+    }
 }

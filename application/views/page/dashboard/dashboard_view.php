@@ -106,7 +106,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3">
+    <!--div class="col-md-3">
         <div class="panel bg-brown-300">
             <div class="panel-body">
                 <div class="row">
@@ -126,10 +126,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div-->
 </div>
 <p></p>
-<div class="row">
+<!--div class="row">
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-heading bg-teal-400">
@@ -142,7 +142,7 @@
             </div>
         </div>
     </div>
-</div>
+</div-->
 <script type="text/javascript">
     Morris.Bar({
         element: 'graph',

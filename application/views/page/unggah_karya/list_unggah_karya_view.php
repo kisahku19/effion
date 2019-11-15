@@ -18,6 +18,19 @@ function limit_words($string, $word_limit){
                 </h5>
                
             </div>
+            <form method="post" action="">
+                <div class="datatable-header">
+                    <div class="col-md-4 dataTables_filter">
+                        <select name="filter_date" class="form-control select2" onchange="this.form.submit()">
+                            <option value="">Pilih Waktu</option>
+                            <option value="1" <?=(isset($filter)&&$filter==1)?'selected' : '' ?>>Daily</option>
+                            <option value="2" <?=(isset($filter)&&$filter==2)?'selected' : '' ?>>Weekly</option>
+                            <option value="3" <?=(isset($filter)&&$filter==3)?'selected' : '' ?>>Monthly</option>
+                            <option value="4" <?=(isset($filter)&&$filter==4)?'selected' : '' ?>>Yearly</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
             <table class="table table-responsive" id="table-unggah-karya">
                 <thead>
                     <tr>

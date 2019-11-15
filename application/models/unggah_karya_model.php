@@ -3,10 +3,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Unggah_karya_model extends CI_Model{
 
-    public function get_all_unggah_karya(){
+    public function get_all_unggah_karya($filter=false){
         $this->db->select('unggah_karya.id_karya, unggah_karya.id_anggota, anggota.nama_lengkap, unggah_karya.nama_channel, DATE_FORMAT(unggah_karya.tanggal, "%d %M %Y") as tanggal, unggah_karya.isi_karya, unggah_karya.video');
         $this->db->from('unggah_karya');
         $this->db->join('anggota', 'unggah_karya.id_anggota = anggota.id_anggota');
+        if ($filter){
+            switch ($filter){
+                case 1 : $this->db->where('date(tanggal)=date(now())');
+                break;
+                case 2 : $this->db->where('YEARWEEK(tanggal)=YEARWEEK(now())');
+                break;
+                case 3 : $this->db->where('MONTH(tanggal)=MONTH(now()) and year(tanggal)=year(now())');
+                break;
+                case 4 : $this->db->where('YEAR(tanggal)=YEAR(now())');
+                break;
+            }
+        }
         $this->db->order_by('id_karya', 'DESC');
         $hasil = $this->db->get()->result();
         return $hasil;

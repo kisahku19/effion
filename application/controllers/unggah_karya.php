@@ -12,7 +12,9 @@ class Unggah_karya extends HSM_Conttroller{
     public function index(){
         $data['title'] = 'Management Karya';
         $data['content'] = 'page/unggah_karya/list_unggah_karya_view';
-        $data['list_unggah_karya'] = $this->unggah_karya_model->get_all_unggah_karya();
+        $data['filter'] = $this->input->post('filter_date');
+        $data['list_unggah_karya'] = $this->unggah_karya_model->get_all_unggah_karya($data['filter']);
+        
         $data['page_js'] = 'page/unggah_karya/page_js';
         $this->load->view('wrapper', $data);
     }

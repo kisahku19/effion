@@ -38,6 +38,19 @@ class Anggota extends HSM_Conttroller{
     }
 
     public function download_anggota(){
+        $this->load->library('pdf');
+        $this->load->library('pdf');
+        
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = "laporan-petanikode.pdf";
+        
+        $data['title'] = 'Daftar Anggota';
+        $data['content'] = 'page/anggota/list_anggota_download';
+        $data['list_anggota'] = $this->anggota_model->get_all_anggota();
+        $data['page_js'] = 'page/anggota/page_js';
+
+        $this->pdf->load_view('wrapper', $data);
+        /*
         $this->load->library('excel');
         $inputFileName = FCPATH.'template/download_anggota.xlsx';
         try {
@@ -73,6 +86,7 @@ class Anggota extends HSM_Conttroller{
         header('Cache-Control: max-age=0');
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         $objWriter->save('php://output');
+        */
     }
 
 }

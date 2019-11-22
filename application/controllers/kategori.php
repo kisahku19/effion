@@ -12,7 +12,7 @@ class Kategori extends HSM_Conttroller{
     }
 
     public function index(){
-        $data['title'] = 'Management Kategori';
+        $data['title'] = 'Manajemen Kategori';
         $data['content'] = 'page/kategori/list_kategori_view';
         $data['list_kategori'] = $this->kategori_model->get_all_kategori();
         $data['page_js'] = 'page/kategori/page_js';

@@ -63,7 +63,7 @@ function limit_words($string, $word_limit){
                       <tr>  <td><?= $i ?></td>
                         <td><?= $value->nama_lengkap ?></td>
                         <td><strong><?= $value->nama_channel ?></strong></td>
-                        <td><?= $value->tanggal ?></td>
+                        <td><?= date("Y-m-d", strtotime($value->tanggal)); ?></td>
                         <td><?php $limited_string = limit_words($value->isi_karya, 10);
                         echo $limited_string; ?></td>
                         

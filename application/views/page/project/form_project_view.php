@@ -13,7 +13,7 @@
                                                                                     }
                                                                                     ?>" enctype="multipart/form-data">
                     <div class="form-group row">
-                        <label for="" class="col-md-3">CHANNEL</label>
+                        <label for="" class="col-md-3">KANAL</label>
                         <div class="col-md-6">
                             <input type="text" name="nama_channel" id="" class="form-control" value="<?php
                                                                                                         if (!empty($detail_project)) {

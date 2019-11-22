@@ -16,7 +16,7 @@
                             NAMA LENGKAP
                         </th>
                         <th>
-                            EMAIL
+                            SUREL
                         </th>
                         <th>
                             NO HANDPHONE

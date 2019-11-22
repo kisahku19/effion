@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                            <a href="<?=base_url()?>project" style="color:#fff">Project</a>
+                            <a href="<?=base_url()?>project" style="color:#fff">Proyek</a>
                         </div>
                         <div class="text-muted">
                             <a href="<?=base_url()?>project" style="color:#fff"><?= $total_project ?> Project</a>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                        <a href="<?=base_url()?>training" style="color:#fff">Training</a>
+                        <a href="<?=base_url()?>training" style="color:#fff">Pelatihan</a>
                         </div>
                         <div class="text-muted">
                         <a href="<?=base_url()?>training" style="color:#fff"><?= $total_training; ?> Training</a>

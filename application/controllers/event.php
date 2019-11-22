@@ -14,7 +14,7 @@ class event extends HSM_Conttroller{
     }
 
     public function index(){
-        $data['title'] = 'Management event';
+        $data['title'] = 'Manajemen event';
         $data['content'] = 'page/event/list_event_view';
         $data['list_event'] = $this->event_model->get_all_event();
         $data['page_js'] = 'page/event/page_js';
@@ -116,7 +116,7 @@ class event extends HSM_Conttroller{
         $data['kategori'] = $this->kategori_model->get_all_kategori();
 
         if (!empty($id)) {
-            $data['title'] = 'Edit Event';
+            $data['title'] = 'Sunting Event';
             $data['detail_event'] = $this->event_model->get_event_by_id($id);
         }else {
             $data['title'] = 'Tambah Event';

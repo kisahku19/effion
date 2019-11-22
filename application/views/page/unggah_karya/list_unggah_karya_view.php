@@ -23,10 +23,10 @@ function limit_words($string, $word_limit){
                     <div class="col-md-4 dataTables_filter">
                         <select name="filter_date" class="form-control select2" onchange="this.form.submit()">
                             <option value="">Pilih Waktu</option>
-                            <option value="1" <?=(isset($filter)&&$filter==1)?'selected' : '' ?>>Daily</option>
-                            <option value="2" <?=(isset($filter)&&$filter==2)?'selected' : '' ?>>Weekly</option>
-                            <option value="3" <?=(isset($filter)&&$filter==3)?'selected' : '' ?>>Monthly</option>
-                            <option value="4" <?=(isset($filter)&&$filter==4)?'selected' : '' ?>>Yearly</option>
+                            <option value="1" <?=(isset($filter)&&$filter==1)?'selected' : '' ?>>Hari</option>
+                            <option value="2" <?=(isset($filter)&&$filter==2)?'selected' : '' ?>>Minggu</option>
+                            <option value="3" <?=(isset($filter)&&$filter==3)?'selected' : '' ?>>Bulan</option>
+                            <option value="4" <?=(isset($filter)&&$filter==4)?'selected' : '' ?>>Tahun</option>
                         </select>
                     </div>
                 </div>
@@ -41,13 +41,13 @@ function limit_words($string, $word_limit){
                             ANGGOTA
                         </th>
                         <th>
-                            CHANNEL
+                            KANAL
                         </th>
                         <th>
                             TANGGAL
                         </th>
                         <th>
-                            ISI TRAINING
+                            ISI KARYA
                         </th>
                         <th>
                             VIDEO

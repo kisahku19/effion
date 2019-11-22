@@ -24,7 +24,7 @@
             }],
             dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
             language: {
-                search: '<span>Filter:</span> _INPUT_',
+                search: '<span>Penyaring:</span> _INPUT_',
                 lengthMenu: '<span>Show:</span> _MENU_',
                 paginate: {
                     'first': 'First',
@@ -45,7 +45,7 @@
 
         });
 
-        $('.dataTables_filter input[type=search]').attr('placeholder', 'search...');
+        $('.dataTables_filter input[type=search]').attr('placeholder', 'pencarian...');
 
 
         // Enable Select2 select for the length option

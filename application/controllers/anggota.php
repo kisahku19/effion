@@ -12,7 +12,7 @@ class Anggota extends HSM_Conttroller{
     }
 
     public function index(){
-        $data['title'] = 'Management Anggota';
+        $data['title'] = 'Manajemen Anggota';
         $data['content'] = 'page/anggota/list_anggota_view';
         $data['list_anggota'] = $this->anggota_model->get_all_anggota();
         $data['page_js'] = 'page/anggota/page_js';

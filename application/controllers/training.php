@@ -10,7 +10,7 @@ class Training extends HSM_Conttroller{
         $this->load->model('training_model');
     }
     public function index(){
-        $data['title'] = 'Management training';
+        $data['title'] = 'Manajemen training';
         $data['content'] = 'page/training/list_training_view';
         $data['list_training'] = $this->training_model->get_all_training();
         $data['page_js'] = 'page/training/page_js';
@@ -19,7 +19,7 @@ class Training extends HSM_Conttroller{
 
     public function form_training($id=null){
         if (!empty($id)) {
-            $data['title'] = 'Edit training';
+            $data['title'] = 'Sunting training';
             $data['detail_training'] = $this->training_model->get_training_by_id($id);
         }else {
             $data['title'] = 'Tambah training';

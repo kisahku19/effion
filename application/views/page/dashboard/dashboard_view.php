@@ -41,23 +41,19 @@
                 </div>
             </div>
         </div>
-</div>
-<div class="col-md-3">
-    <div class="panel bg-danger-600">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-5">
-                    <a href="<?= base_url() ?>project" class="btn btn-rounded btn-icon btn-hover text-white icon-bordered">
-                        <i class="icon icon-grid5 icon-3x"></i>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <div class="text-bold">
-                        <a href="<?= base_url() ?>project" style="color:#fff">Proyek</a>
+    </div>
+    <div class="col-md-3">
+        <div class="panel bg-danger-600">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <a href="<?=base_url()?>project" class="btn btn-rounded btn-icon btn-hover text-white icon-bordered">
+                            <i class="icon icon-grid5 icon-3x"></i>
+                        </a>
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                            <a href="<?= base_url() ?>project" style="color:#fff">Project</a>
+                            <a href="<?=base_url()?>project" style="color:#fff">Proyek</a>
                         </div>
                         <div class="text-muted">
                             <a href="<?=base_url()?>project" style="color:#fff"><?= $total_project ?> Proyek</a>
@@ -73,13 +69,13 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-5">
-                        <a href="<?= base_url() ?>training" class="btn btn-rounded btn-icon btn-hover text-white">
+                        <a href="<?=base_url()?>training" class="btn btn-rounded btn-icon btn-hover text-white">
                             <i class="icon icon-list icon-3x"></i>
                         </a>
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                            <a href="<?= base_url() ?>training" style="color:#fff">Pelatihan</a>
+                        <a href="<?=base_url()?>training" style="color:#fff">Pelatihan</a>
                         </div>
                         <div class="text-muted">
                         <a href="<?=base_url()?>training" style="color:#fff"><?= $total_training; ?> Pelatihan</a>

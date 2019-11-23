@@ -146,13 +146,13 @@ class Front extends CI_Controller
     {
         $config['upload_path']          = './foto_anggota/';
         $config['allowed_types']        = 'gif|jpg|png';
-        
+
         //cek confirm password
-        if ($this->input->post('password')<>$this->input->post('confirm_password')) {
+        if ($this->input->post('password') <> $this->input->post('confirm_password')) {
             $this->session->set_flashdata('pesan', 'PENDAFTARAN GAGAL || Email Sudah Terdaftar');
             redirect('front/register', 'refresh');
         }
-        
+
         //cek email
         $email = $this->db->where('email', $this->input->post('email'))->get('anggota')->row();
 
@@ -160,19 +160,16 @@ class Front extends CI_Controller
         //cek no hp
         $phone = $this->db->where('no_hp', $this->input->post('phone'))->get('anggota')->row();
 
-        
-        if (empty($email->email)) {
-        }else{
+
+        if (empty($email->email)) { } else {
             $this->session->set_flashdata('pesan', 'PENDAFTARAN GAGAL || Email Sudah Terdaftar');
             redirect('front/register', 'refresh');
         }
-        if (empty($phone->no_hp)) {
-
-        }else{
+        if (empty($phone->no_hp)) { } else {
             $this->session->set_flashdata('pesan', 'No Handphone Sudah Terdaftar');
             redirect('front/register', 'refresh');
         }
-        
+
         $this->load->library('upload', $config);
         $data_arr = array(
             'nama_lengkap' => $this->input->post('nama_lengkap'),
@@ -182,7 +179,7 @@ class Front extends CI_Controller
             'username' => $this->input->post('username'),
             'password' =>  md5($this->input->post('password'))
         );
-        
+
         if ($this->upload->do_upload('file')) {
             $data_arr['gambar'] = $this->upload->data('file_name');
             $this->db->insert('anggota', $data_arr);
@@ -205,21 +202,21 @@ class Front extends CI_Controller
                 $sum_rating += $value->rating;
             }
 
-            $data['avg_rating'] = round($sum_rating / $data['total_rating'],2);
+            $data['avg_rating'] = round($sum_rating / $data['total_rating'], 2);
         } else {
             $data['avg_rating'] = 0;
         }
-        if (isset($_SESSION['id_anggota'])){
-        // cek sudah rating atau belum
+        if (isset($_SESSION['id_anggota'])) {
+            // cek sudah rating atau belum
             $data['cek_rating'] = $this->db->where(['id_event' => $id, 'id_anggota' => $_SESSION['id_anggota']])->get('rating_event')->num_rows();
-        // end cek
-        }else{
+            // end cek
+        } else {
             $data['cek_rating'] = 0;
         }
-        
+
         $data['detail_forum'] = $this->forum_model->get_forum_by_id($hasil->id_forum);
         $data['jumlah_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0])->get('komentar_forum')->num_rows();
-        $data['list_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0])->order_by('waktu','desc')->get('komentar_forum')->result();
+        $data['list_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0])->order_by('waktu', 'desc')->get('komentar_forum')->result();
         $data['title'] = 'Detail Event';
         $data['content'] = 'page/front/detail_event_view';
         $this->load->view('page/front/component/wrapper', $data);
@@ -238,7 +235,7 @@ class Front extends CI_Controller
                 $sum_rating += $value->rating;
             }
 
-            $data['avg_rating'] = round($sum_rating / $data['total_rating'],2);
+            $data['avg_rating'] = round($sum_rating / $data['total_rating'], 2);
         } else {
             $data['avg_rating'] = 0;
         }
@@ -260,7 +257,7 @@ class Front extends CI_Controller
                 $sum_rating += $value->rating;
             }
 
-            $data['avg_rating'] = round($sum_rating / $data['total_rating'],2);
+            $data['avg_rating'] = round($sum_rating / $data['total_rating'], 2);
         } else {
             $data['avg_rating'] = 0;
         }
@@ -284,7 +281,7 @@ class Front extends CI_Controller
                 $sum_rating += $value->rating;
             }
 
-            $data['avg_rating'] = round($sum_rating / $data['total_rating'],2);
+            $data['avg_rating'] = round($sum_rating / $data['total_rating'], 2);
         } else {
             $data['avg_rating'] = 0;
         }
@@ -332,15 +329,21 @@ class Front extends CI_Controller
     {
         if (isset($_SESSION['nama_lengkap'])) {
             date_default_timezone_set('Asia/Jakarta');
-            $data_komentar = array(
-                'nama' => $this->session->userdata('nama_lengkap'),
-                'id_forum' => $this->input->post('id_forum'),
-                'isi_komentar' => $this->input->post('isi_komentar'),
-                'waktu' => date('d/m/Y H:i:s')
-            );
+            $cek = $this->badwords($this->input->post('isi_komentar'));
+            if ($cek) {
+                $this->session->set_flashdata('pesan', 'Dilarang menggunakan kata : ' . $cek);
+                redirect('front/detail_event/' . $id);
+            } else {
+                $data_komentar = array(
+                    'nama' => $this->session->userdata('nama_lengkap'),
+                    'id_forum' => $this->input->post('id_forum'),
+                    'isi_komentar' => $this->input->post('isi_komentar'),
+                    'waktu' => date('d/m/Y H:i:s')
+                );
 
-            $this->db->insert('komentar_forum', $data_komentar);
-            redirect('front/detail_event/' . $id, 'refresh');
+                   $this->db->insert('komentar_forum', $data_komentar);
+                redirect('front/detail_event/' . $id, 'refresh');
+            }
         } else {
             redirect('front/login', 'refresh');
         }
@@ -493,5 +496,24 @@ class Front extends CI_Controller
         $this->db->delete('unggah_karya');
         $this->session->set_flashdata('pesan', 'Data karya berhasil di hapus');
         redirect('front/member_area/' . $_SESSION['nama_lengkap'], 'refresh');
+    }
+
+    private function badwords($string)
+    {
+        $badWords = array("suck", "tai", "anjing", "goblok", "bangsat", "babi", "fuck");
+
+        $matches = array();
+        $matchFound = preg_match_all(
+            "/(" . implode($badWords, "|") . ")/i",
+            $string,
+            $matches
+        );
+        $words = array();
+        if ($matchFound) {
+            $words = array_unique($matches[0]);
+            return implode(",", $words);
+        } else {
+            return false;
+        }
     }
 }

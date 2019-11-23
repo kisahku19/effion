@@ -78,7 +78,7 @@
                         <a href="<?=base_url()?>training" style="color:#fff">Pelatihan</a>
                         </div>
                         <div class="text-muted">
-                        <a href="<?=base_url()?>training" style="color:#fff"><?= $total_training; ?> Training</a>
+                        <a href="<?=base_url()?>training" style="color:#fff"><?= $total_training; ?> Pelatihan</a>
                         </div>
                     </div>
                 </div>

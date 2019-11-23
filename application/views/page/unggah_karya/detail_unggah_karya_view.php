@@ -16,7 +16,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Channel :
+                            Kanal :
                         </td>
                         <td><?= $d_unggah_karya->nama_channel ?></td>
                     </tr>

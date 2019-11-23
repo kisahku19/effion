@@ -10,7 +10,7 @@ class Unggah_karya extends HSM_Conttroller{
         $this->load->model('unggah_karya_model');
     }
     public function index(){
-        $data['title'] = 'Management Karya';
+        $data['title'] = 'Manajemen Karya';
         $data['content'] = 'page/unggah_karya/list_unggah_karya_view';
         $data['filter'] = $this->input->post('filter_date');
         $data['list_unggah_karya'] = $this->unggah_karya_model->get_all_unggah_karya($data['filter']);
@@ -21,7 +21,7 @@ class Unggah_karya extends HSM_Conttroller{
 
     public function form_unggah_karya($id=null){
         if (!empty($id)) {
-            $data['title'] = 'Edit Unggah Karya';
+            $data['title'] = 'Sunting Unggah Karya';
             $data['detail_unggah_karya'] = $this->unggah_karya_model->get_unggah_karya_by_id($id);
         }else {
             $data['title'] = 'Tambah Unggah Karya';

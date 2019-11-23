@@ -21,7 +21,7 @@
                     </tr>
                     <tr>
                         <td>
-                            EMAIL :
+                            SUREL :
                         </td>
                         <td><?= $d_anggota->email ?></td>
                     </tr>

@@ -1,10 +1,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel">
-            <div class="panel-heading">
+        <div class="panel-heading">
                 <h5 class="panel-title">
                     <?= $title; ?>
-                    <a href="<?= base_url() ?>anggota/download_anggota/" class="btn btn-lg btn-primary pull-right">Cetak</a>
                 </h5>
             </div>
             <table class="table table-responsive" id="table-anggota">
@@ -31,9 +30,6 @@
                         <th>
                             GAMBAR
                         </th>
-                        <th>
-                            AKSI
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,12 +43,7 @@
                             <td><?= $value->domisili ?></td>
                             <td><?= $value->username ?></td>
                             <td><img src="<?= base_url() ?>foto_anggota/<?= $value->gambar ?>" class="img img-thumbnail"></td>
-                            <td>
-                                <div class="btn-group btn-group-xs">
-                                    <a href="<?= base_url() ?>anggota/detail_anggota/<?= $value->id_anggota ?>" class="btn btn-primary"><i class="icon icon-eye"></i></a>
-                                    <button type="button" class="btn btn-danger hapus-anggota" id="<?= $value->id_anggota ?>"><i class="icon icon-trash"></i></button>
-                                </div>
-                            </td>
+                            
                         </tr>
                         <?php $i++;
                     }

@@ -12,7 +12,7 @@ class Project extends HSM_Conttroller
     }
     public function index()
     {
-        $data['title'] = 'Management Project';
+        $data['title'] = 'Manajemen Project';
         $data['content'] = 'page/project/list_project_view';
         $data['list_project'] = $this->project_model->get_all_project();
         $data['page_js'] = 'page/project/page_js';
@@ -22,7 +22,7 @@ class Project extends HSM_Conttroller
     public function form_project($id = null)
     {
         if (!empty($id)) {
-            $data['title'] = 'Edit Project';
+            $data['title'] = 'Sunting Project';
             $data['detail_project'] = $this->project_model->get_project_by_id($id);
         } else {
             $data['title'] = 'Tambah Project';

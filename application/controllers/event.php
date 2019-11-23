@@ -14,7 +14,7 @@ class event extends HSM_Conttroller{
     }
 
     public function index(){
-        $data['title'] = 'Management event';
+        $data['title'] = 'Manajemen event';
         $data['content'] = 'page/event/list_event_view';
         $data['list_event'] = $this->event_model->get_all_event();
         $data['page_js'] = 'page/event/page_js';
@@ -116,7 +116,7 @@ class event extends HSM_Conttroller{
         $data['kategori'] = $this->kategori_model->get_all_kategori();
 
         if (!empty($id)) {
-            $data['title'] = 'Edit Event';
+            $data['title'] = 'Sunting Event';
             $data['detail_event'] = $this->event_model->get_event_by_id($id);
         }else {
             $data['title'] = 'Tambah Event';
@@ -138,6 +138,19 @@ class event extends HSM_Conttroller{
     }
 
     public function download_event(){
+        $this->load->library('pdf');
+        $this->load->library('pdf');
+        
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = "laporan-event.pdf";
+        
+        $data['title'] = 'Daftar Event';
+        $data['content'] = 'page/event/list_event_download';
+        $data['list_event'] = $this->event_model->get_all_event();
+        $data['page_js'] = 'page/event/page_js';
+
+        $this->pdf->load_view('wrapper', $data);
+        /*
         $this->load->library('excel');
         $objPHPExcel = $this->excel;
         $objPHPExcel->setActiveSheetIndex(0);
@@ -172,5 +185,6 @@ class event extends HSM_Conttroller{
         header('Cache-Control: max-age=0');
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         $objWriter->save('php://output');
+        */
     }
 }

@@ -91,7 +91,6 @@
         </div>
     </div>
     <!-- Portfolio single - Slider -->
-
     <!-- Project Info -->
     <div class="col-md-4">
         <div class="portfolio-meta">

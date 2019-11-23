@@ -14,7 +14,7 @@ class Dashboard extends HSM_Conttroller
     function index()
     {
        
-        $data['title'] = 'Dashboard';
+        $data['title'] = 'Beranda';
         $hasil = $this->dashboard_model->get_all_forum();
         $data['graph'] = json_encode($hasil);
        $data['page_js'] = 'page/dashboard/page_js';

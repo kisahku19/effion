@@ -29,7 +29,7 @@ if (!empty($this->session->flashdata('pesan'))) {
                             DIBUAT
                         </th>
                         <th>
-                            CHANNEL
+                            KANAL
                         </th>
                         <th>
                             TANGGAL

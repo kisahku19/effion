@@ -56,7 +56,7 @@
                             <a href="<?=base_url()?>project" style="color:#fff">Proyek</a>
                         </div>
                         <div class="text-muted">
-                            <a href="<?=base_url()?>project" style="color:#fff"><?= $total_project ?> Project</a>
+                            <a href="<?=base_url()?>project" style="color:#fff"><?= $total_project ?> Proyek</a>
                         </div>
                     </div>
                 </div>

@@ -32,10 +32,7 @@
                 $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').removeClass('dropup');
             }
         });
-
         $("#table-dashboard-tagihan").dataTable();
         $('.dataTables_filter input[type=search]').attr('placeholder', 'Kode Tagihan...');
-
     });
-
 </script>

@@ -1,16 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class Dashboard extends HSM_Conttroller
 {
-
     function __construct()
     {
         parent::__construct();
         $this->cek_login();
         $this->load->model('dashboard_model');
     }
-
     function index()
     {
        
@@ -28,7 +25,6 @@ class Dashboard extends HSM_Conttroller
         
         $this->load->view('wrapper', $data);
     }
-
     // function dashboard_wali()
     // {
     //     $data['title'] = 'Dashboard Wali Murid';
@@ -38,7 +34,6 @@ class Dashboard extends HSM_Conttroller
         
     //     $this->load->view('wrapper', $data);
     // }
-
     // function dashboard_siswa()
     // {
     //     $data['title'] = 'Dashboard';

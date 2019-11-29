@@ -17,7 +17,7 @@ function limit_words($string, $word_limit){
                     <?= $title; ?>
                 </h5>
                 <a href="<?= base_url()?>event/form_event/" class="btn btn-lg btn-primary pull-right">Tambah Event</a>
-                <a href="<?= base_url()?>event/download_event/" class="btn btn-lg btn-primary pull-right" style="margin-right: 10px;">Download</a>
+                <a href="<?= base_url()?>event/download_event/" class="btn btn-lg btn-primary pull-right" style="margin-right: 10px;">Cetak</a>
             </div>
             <table class="table table-responsive" id="table-event">
                 <thead>

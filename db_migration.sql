@@ -37,3 +37,7 @@ INSERT INTO `tbl_menu` (`id_menu`, `label`, `link`, `icon`, `grup`, `parent`, `s
 ===== event and forum relation ====
 ALTER TABLE `event` ADD `id_forum` INT NOT NULL AFTER `id_kategori`;
 ===== end event and forum relation ====
+
+===== komentar forum ====
+ALTER TABLE `komentar_forum` ADD `status_komentar` INT(3) NOT NULL AFTER `id_parent_komentar_forum`;
+===== end komentar forum ====

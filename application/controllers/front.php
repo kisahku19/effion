@@ -218,8 +218,9 @@ class Front extends CI_Controller
         }
         
         $data['detail_forum'] = $this->forum_model->get_forum_by_id($hasil->id_forum);
-        $data['jumlah_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0])->get('komentar_forum')->num_rows();
-        $data['list_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0])->order_by('waktu','desc')->get('komentar_forum')->result();
+        $data['jumlah_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0,'status_komentar'=>1])->get('komentar_forum')->num_rows();
+        $data['list_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0,'status_komentar'=>1])->order_by('waktu','desc')->get('komentar_forum')->result();
+        
         $data['title'] = 'Detail Event';
         $data['content'] = 'page/front/detail_event_view';
         $this->load->view('page/front/component/wrapper', $data);
@@ -336,10 +337,12 @@ class Front extends CI_Controller
                 'nama' => $this->session->userdata('nama_lengkap'),
                 'id_forum' => $this->input->post('id_forum'),
                 'isi_komentar' => $this->input->post('isi_komentar'),
-                'waktu' => date('d/m/Y H:i:s')
+                'waktu' => date('d/m/Y H:i:s'),
+                'status_komentar' => 0,
             );
 
             $this->db->insert('komentar_forum', $data_komentar);
+            $this->session->set_flashdata('pesan', 'Komentar anda akan ditampilkan setelah di setujui oleh admin');
             redirect('front/detail_event/' . $id, 'refresh');
         } else {
             redirect('front/login', 'refresh');

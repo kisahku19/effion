@@ -57,5 +57,14 @@ class Event_model extends CI_Model{
             return false;
         }
     }
+
+    function delete_komentar($id){
+        $this->db->where('id_komentar_forum', $id);
+        if ($this->db->delete('komentar_forum')) {
+            return true;
+        }else {
+            return false;
+        }
+    }
    
 }

@@ -20,7 +20,7 @@
             columnDefs: [{
                 orderable: false,
                 width: '150px',
-                targets: [6]
+                targets: [4]
             }],
             dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
             language: {
@@ -67,6 +67,22 @@
                 });
             }
         });
+
+        $(document).on('click', '.hapus-komentar', function() {
+            var id = $(this).attr('id');
+            if (confirm('Anda yakin ingin menghapus komentar')) {
+                $.ajax({
+                    url: '<?= base_url() ?>komentar/hapus_komentar_ajax/' + id,
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(data) {
+                        alert(data.pesan);
+                        location.reload();
+                    }
+                });
+            }
+        });
+
         $('#keterangan').wysihtml5({
             parserRules: wysihtml5ParserRules
         });

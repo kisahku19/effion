@@ -1,8 +1,9 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
+ini_set('max_execution_time', '300');
 
-
-class event extends HSM_Conttroller{
+class event extends HSM_Conttroller
+{
 
     public function __construct()
     {
@@ -13,7 +14,8 @@ class event extends HSM_Conttroller{
         $this->load->model('forum_model');
     }
 
-    public function index(){
+    public function index()
+    {
         $data['title'] = 'Manajemen event';
         $data['content'] = 'page/event/list_event_view';
         $data['list_event'] = $this->event_model->get_all_event();
@@ -21,7 +23,8 @@ class event extends HSM_Conttroller{
         $this->load->view('wrapper', $data);
     }
 
-    public function detail_event($id){
+    public function detail_event($id)
+    {
         $data['title'] = 'Detail event';
         $data['content'] = 'page/event/detail_event_view';
         $data['d_event'] = $this->event_model->get_event_by_id($id);
@@ -29,10 +32,11 @@ class event extends HSM_Conttroller{
         $this->load->view('wrapper', $data);
     }
 
-    function simpan_event($id=null){
+    function simpan_event($id = null)
+    {
         $config['upload_path']          = './foto_event/';
         $config['allowed_types']        = 'gif|jpg|png';
-       
+
 
         $this->load->library('upload', $config);
         $data_arr = array(
@@ -56,18 +60,18 @@ class event extends HSM_Conttroller{
                 if ($this->event_model->update_event($id, $data_arr)) {
                     $this->session->set_flashdata('pesan', 'Event berhasil disimpan');
                     redirect('event', 'refresh');
-                }else {
-                   $this->session->set_flashdata('pesan', 'Event gagal disimpan');
+                } else {
+                    $this->session->set_flashdata('pesan', 'Event gagal disimpan');
                 }
-            }else{
+            } else {
                 if ($this->event_model->update_event($id, $data_arr)) {
                     $this->session->set_flashdata('pesan', 'Event berhasil disimpan');
                     redirect('event', 'refresh');
-                }else {
-                   $this->session->set_flashdata('pesan', 'Event gagal disimpan');
+                } else {
+                    $this->session->set_flashdata('pesan', 'Event gagal disimpan');
                 }
             }
-        }else{
+        } else {
             if ($this->upload->do_upload('gambar')) {
                 $data_arr['gambar'] = $this->upload->data('file_name');
                 if ($this->event_model->insert_event($data_arr)) {
@@ -79,16 +83,16 @@ class event extends HSM_Conttroller{
                     //end create forum for comment
 
                     //update add forum_id to event table
-                    $data_update = array('id_forum'=>$id_forum);
+                    $data_update = array('id_forum' => $id_forum);
                     $this->event_model->update_event($id_event, $data_update);
                     //end update add forum_id to event table
                     $this->session->set_flashdata('pesan', 'Event berhsail di tambahkan');
                     redirect('event', 'refresh');
-                }else {
+                } else {
                     $this->session->set_flashdata('pesan', 'Event gagal di tambahkan');
                     redirect('event', 'refresh');
                 }
-            }else{
+            } else {
                 if ($this->event_model->insert_event($data_arr)) {
                     $id_event = $this->db->insert_id();
                     //create forum for comment
@@ -97,13 +101,13 @@ class event extends HSM_Conttroller{
                     //end create forum for comment
 
                     //update add forum_id to event table
-                    $data_update = array('id_forum'=>$id_forum);
+                    $data_update = array('id_forum' => $id_forum);
                     $this->event_model->update_event($id_event, $data_update);
                     //end update add forum_id to event table
 
                     $this->session->set_flashdata('pesan', 'Event berhasil di tambahkan');
                     redirect('event', 'refresh');
-                }else {
+                } else {
                     $this->session->set_flashdata('pesan', 'Event gagal di tambahkan');
                     redirect('event', 'refresh');
                 }
@@ -111,14 +115,15 @@ class event extends HSM_Conttroller{
         }
     }
 
-    function form_event($id=null){
-        
+    function form_event($id = null)
+    {
+
         $data['kategori'] = $this->kategori_model->get_all_kategori();
 
         if (!empty($id)) {
             $data['title'] = 'Sunting Event';
             $data['detail_event'] = $this->event_model->get_event_by_id($id);
-        }else {
+        } else {
             $data['title'] = 'Tambah Event';
             $data['detail_event'] = '';
         }
@@ -127,23 +132,25 @@ class event extends HSM_Conttroller{
         $this->load->view('wrapper', $data);
     }
 
-    public function hapus_event_ajax($id){
+    public function hapus_event_ajax($id)
+    {
         if ($this->event_model->delete_event($id)) {
             $data['pesan'] = 'event berhasil di hapus';
-        }else {
+        } else {
             $data['pesan'] = 'event gagal di hapus';
         }
 
         echo json_encode($data);
     }
 
-    public function download_event(){
+    public function download_event()
+    {
         $this->load->library('pdf');
         $this->load->library('pdf');
-        
+
         $this->pdf->setPaper('A4', 'landscape');
         $this->pdf->filename = "laporan-event.pdf";
-        
+
         $data['title'] = 'Daftar Event';
         $data['content'] = 'page/event/list_event_download';
         $data['list_event'] = $this->event_model->get_all_event();

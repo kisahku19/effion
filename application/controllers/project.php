@@ -70,4 +70,20 @@ class Project extends HSM_Conttroller
 
         echo json_encode($data);
     }
+
+    public function download_project()
+    {
+        $this->load->library('pdf');
+        $this->load->library('pdf');
+
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = "data-project.pdf";
+
+        $data['title'] = 'Daftar Project';
+        $data['content'] = 'page/project/list_project_download';
+        $data['list_project'] = $this->project_model->get_all_project();
+        $data['page_js'] = 'page/project/page_js';
+
+        $this->pdf->load_view('wrapper', $data);
+    }
 }

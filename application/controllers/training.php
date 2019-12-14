@@ -10,7 +10,7 @@ class Training extends HSM_Conttroller{
         $this->load->model('training_model');
     }
     public function index(){
-        $data['title'] = 'Manajemen training';
+        $data['title'] = 'Manajemen Pelatihan';
         $data['content'] = 'page/training/list_training_view';
         $data['list_training'] = $this->training_model->get_all_training();
         $data['page_js'] = 'page/training/page_js';
@@ -19,10 +19,10 @@ class Training extends HSM_Conttroller{
 
     public function form_training($id=null){
         if (!empty($id)) {
-            $data['title'] = 'Sunting training';
+            $data['title'] = 'Sunting Pelatihan';
             $data['detail_training'] = $this->training_model->get_training_by_id($id);
         }else {
-            $data['title'] = 'Tambah training';
+            $data['title'] = 'Tambah Pelatihan';
             $data['detail_training'] = '';
         }
         $data['content'] = 'page/training/form_training_view';
@@ -83,11 +83,27 @@ class Training extends HSM_Conttroller{
 
     public function hapus_training_ajax($id=null){
         if ($this->training_model->delete_training($id)) {
-            $data['pesan'] = 'training berhasil di hapus';
+            $data['pesan'] = 'Pelatihan berhasil di hapus';
         }else {
-            $data['pesan'] = 'training gagal di hapus';
+            $data['pesan'] = 'Pelatihan gagal di hapus';
         }
 
         echo json_encode($data);
+    }
+
+    public function download_training()
+    {
+        $this->load->library('pdf');
+        $this->load->library('pdf');
+
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = "data-training.pdf";
+
+        $data['title'] = 'Daftar Pelatihan';
+        $data['content'] = 'page/training/list_training_download';
+        $data['list_training'] = $this->training_model->get_all_training();
+        $data['page_js'] = 'page/training/page_js';
+
+        $this->pdf->load_view('wrapper', $data);
     }
 }

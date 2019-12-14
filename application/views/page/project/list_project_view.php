@@ -17,7 +17,8 @@ if (!empty($this->session->flashdata('pesan'))) {
                 <h5 class="panel-title">
                     <?= $title; ?>
                 </h5>
-                <a href="<?= base_url() ?>project/form_project/" class="btn btn-lg btn-primary pull-right">Tambah Project</a>
+                <a href="<?= base_url()?>project/form_project/" class="btn btn-lg btn-primary pull-right">Tambah Project</a>
+                <a href="<?= base_url()?>project/download_project/" class="btn btn-lg btn-primary pull-right" style="margin-right: 10px;">Cetak</a>
             </div>
             <table class="table table-responsive" id="table-project">
                 <thead>

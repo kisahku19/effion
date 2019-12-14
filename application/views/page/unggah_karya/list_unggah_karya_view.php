@@ -15,6 +15,7 @@ function limit_words($string, $word_limit){
             <div class="panel-heading">
                 <h5 class="panel-title">
                     <?= $title; ?>
+                    <a href="<?= base_url() ?>unggah_karya/download_unggah_karya/" class="btn btn-lg btn-primary pull-right">Cetak</a>
                 </h5>
                
             </div>

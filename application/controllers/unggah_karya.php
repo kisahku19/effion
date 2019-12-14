@@ -101,4 +101,19 @@ class Unggah_karya extends HSM_Conttroller{
 
         echo json_encode($data);
     }
+
+    public function download_unggah_karya()
+    {
+        $this->load->library('pdf');
+
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = "data-unggah_karya.pdf";
+
+        $data['title'] = 'Daftar Unggah Karya';
+        $data['content'] = 'page/unggah_karya/list_unggah_karya_download';
+        $data['list_unggah_karya'] = $this->unggah_karya_model->get_all_unggah_karya();
+        $data['page_js'] = 'page/unggah_karya/page_js';
+
+        $this->pdf->load_view('wrapper', $data);
+    }
 }

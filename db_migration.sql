@@ -44,5 +44,5 @@ ALTER TABLE `komentar_forum` ADD `status_komentar` INT(3) NOT NULL AFTER `id_par
 
 ==== ganti tanggal di komentar ====
 ALTER TABLE `komentar_forum` CHANGE `waktu` `waktu` DATETIME NOT NULL;
-TRUNCATE `komentar_forum`;
+
 =====

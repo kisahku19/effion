@@ -17,7 +17,7 @@ $data['uri'] = $this->uri->segment(1);
 								</ul>
 							</li>
 							
-							<!-- <li <?= ($data['uri'] == 'anggota' ? 'class="project"' : '')?>><a href="<?=base_url();?>project"><i class="icon-archive"></i><span>Project</span></a></li> -->
+							<li <?= ($data['uri'] == 'anggota' ? 'class="project"' : '')?>><a href="<?=base_url();?>project"><i class="icon-archive"></i><span>Project</span></a></li>
 							<li <?= ($data['uri'] == 'anggota' ? 'class="training"' : '')?>><a href="<?=base_url();?>training"><i class="icon-lifebuoy"></i><span>Training</span></a></li>
 							<li <?= ($data['uri'] == 'anggota' ? 'class="unggah_karya"' : '')?>><a href="<?=base_url();?>unggah_karya"><i class="icon-folder-upload"></i><span>Unggah Karya</span></a></li>
 							<li <?= ($data['uri'] == 'kategori' ? 'class="active"' : '')?>><a href="<?=base_url();?>kategori"><i class="icon-price-tags"></i><span>Kategori</span></a></li>

@@ -25,7 +25,7 @@
                     <div class="form-group row">
                         <label for="" class="col-md-3">TANGGAL</label>
                         <div class="col-md-5">
-                            <input type="text" placeholder="10 juni 1988" name="tanggal" id="tanggal" class="form-control" value="<?php
+                            <input type="text" placeholder="Masukan Tanggal Pelatihan" name="tanggal" id="tanggal" class="form-control" value="<?php
                                                                                                                                     if (!empty($detail_training)) {
                                                                                                                                         echo $detail_training->tanggal;
                                                                                                                                     }

@@ -316,7 +316,7 @@ class Front extends CI_Controller
                 'nama' => $this->session->userdata('nama_lengkap'),
                 'id_forum' => $this->input->post('id_forum'),
                 'isi_komentar' => $this->input->post('isi_komentar'),
-                'waktu' => date('d/m/Y H:i:s')
+                'waktu' => date('Y-m-d H:i:s')
             );
 
             $this->db->insert('komentar_forum', $data_komentar);
@@ -334,7 +334,7 @@ class Front extends CI_Controller
                 'nama' => $this->session->userdata('nama_lengkap'),
                 'id_forum' => $this->input->post('id_forum'),
                 'isi_komentar' => $this->input->post('isi_komentar'),
-                'waktu' => date('d/m/Y H:i:s'),
+                'waktu' => date('Y-m-d H:i:s'),
                 'status_komentar' => 0,
             );
 
@@ -354,7 +354,7 @@ class Front extends CI_Controller
                 'nama' => $this->session->userdata('nama_lengkap'),
                 'id_project' => $this->input->post('id_project'),
                 'isi_komentar' => $this->input->post('isi_komentar'),
-                'waktu' => date('d/m/Y -- H:i:s')
+                'waktu' => date('Y-m-d H:i:s')
             );
 
             $this->db->insert('komentar_project', $data_komentar);

@@ -9,9 +9,9 @@ class Komentar extends CI_Controller
 
         $data['title'] = 'Komentar Event';
         $data['content'] = 'page/event/list_komentar_view';
-        $data['all_comment'] = $this->db->get('komentar_forum')->result();
-        $data['unapprove'] = $this->db->where('status_komentar', 0)->get('komentar_forum')->result();
-        $data['approve'] = $this->db->where('status_komentar', 1)->get('komentar_forum')->result();
+        $data['all_comment'] = $this->db->order_by('waktu','desc')->get('komentar_forum')->result();
+        $data['unapprove'] = $this->db->where('status_komentar', 0)->order_by('waktu','desc')->get('komentar_forum')->result();
+        $data['approve'] = $this->db->where('status_komentar', 1)->order_by('waktu','desc')->get('komentar_forum')->result();
         $data['page_js'] = 'page/event/page_js';
         $this->load->view('wrapper', $data);
     }
@@ -23,7 +23,7 @@ class Komentar extends CI_Controller
             'id_forum' => $this->input->post('id_forum'),
             'isi_komentar' => $this->input->post('isi_komentar'),
             'nama' => $this->session->userdata('nama_lengkap'),
-            'waktu' => date('d/m/y H:i:s')
+            'waktu' => date('Y-m-d H:i:s')
         ];
         $this->db->insert('komentar_forum', $data);
         redirect('front/detail_forum/' . $this->input->post('id_forum'));
@@ -44,7 +44,7 @@ class Komentar extends CI_Controller
                 'id_forum' => $this->input->post('id_forum'),
                 'isi_komentar' => $this->input->post('isi_komentar'),
                 'nama' => $this->session->userdata('nama_lengkap'),
-                'waktu' => date('d/m/y H:i:s'),
+                'waktu' => date('Y-m-d H:i:s'),
                 'status_komentar' => 0,
             ];
             $this->db->insert('komentar_forum', $data);
@@ -61,7 +61,7 @@ class Komentar extends CI_Controller
             'id_project' => $this->input->post('id_project'),
             'isi_komentar' => $this->input->post('isi_komentar'),
             'nama' => $this->session->userdata('nama_lengkap'),
-            'waktu' => date('d/m/y H:i:s')
+            'waktu' => date('Y-m-d H:i:s')
         ];
         $this->db->insert('komentar_project', $data);
         redirect('front/detail_project/' . $this->input->post('id_project'));

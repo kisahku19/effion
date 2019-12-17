@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Training_model extends CI_Model{
 
     public function get_all_training(){
-        $this->db->select('training.id_training, training.id_admin, admin.nama_admin, training.nama_training, DATE_FORMAT(training.tanggal, "%d %M %Y") as tanggal, training.isi_training, training.gambar, training.rating');
+        $this->db->select('training.id_training, training.id_admin, admin.nama_admin, training.nama_training, training.tanggal as tanggal, training.isi_training, training.gambar, training.rating');
         $this->db->from('training');
         $this->db->join('admin', 'training.id_admin = admin.id_admin');
         $this->db->order_by('id_training', 'DESC');
@@ -13,7 +13,7 @@ class Training_model extends CI_Model{
     }
 
     function get_training_by_id($id){
-        $this->db->select('training.id_training, training.id_admin, admin.nama_admin, training.nama_training, DATE_FORMAT(training.tanggal, "%d %M %Y") as tanggal, training.isi_training, training.gambar, training.rating');
+        $this->db->select('training.id_training, training.id_admin, admin.nama_admin, training.nama_training, training.tanggal as tanggal, training.isi_training, training.gambar, training.rating');
         $this->db->from('training');
         $this->db->join('admin', 'training.id_admin = admin.id_admin');
         $this->db->where('id_training', $id);

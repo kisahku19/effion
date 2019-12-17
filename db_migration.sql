@@ -41,3 +41,8 @@ ALTER TABLE `event` ADD `id_forum` INT NOT NULL AFTER `id_kategori`;
 ===== komentar forum ====
 ALTER TABLE `komentar_forum` ADD `status_komentar` INT(3) NOT NULL AFTER `id_parent_komentar_forum`;
 ===== end komentar forum ====
+
+==== ganti tanggal di komentar ====
+ALTER TABLE `komentar_forum` CHANGE `waktu` `waktu` DATETIME NOT NULL;
+TRUNCATE `komentar_forum`;
+=====

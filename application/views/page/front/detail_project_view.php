@@ -121,9 +121,15 @@
                         </div>
                     </div>
                     <div class="col-md-5 comment-content">
-                        <span>
-                            <a class="button_style2" data-toggle="modal" href='#<?= $value->id_komentar_project ?>'>Balas</a>
-                        </span>
+                        <?php if (isset($_SESSION['username_anggota'])) { ?>
+                            <span>
+                                <a class="button_style2" data-toggle="modal" href='#<?= $value->id_komentar_project ?>'>Balas</a>
+                            </span>
+                        <?php } else { ?>
+                            <span>
+                                <a class="button_style2" href='<?= base_url() ?>front/login'>Balas</a>
+                            </span>
+                        <?php } ?>
                     </div>
                 </div>
                 <form method="post" action="<?= base_url('komentar/balas_komentar_project/' . $value->id_komentar_project) ?>">
@@ -158,7 +164,11 @@
                 <div class="col-md-12">
                     <input type="hidden" value="<?= $detail_project->id_project ?>" name="id_project">
                     <textarea class="form-control" id="addComment" rows="8"  placeholder="your message" name="isi_komentar"></textarea>
-                    <button type="submit" class="button_style1">Kirim Komentar</button>
+                    <?php if (isset($_SESSION['username_anggota'])) { ?>
+                        <button type="submit" class="button_style1">Kirim Komentar</button>
+                    <?php } else { ?>
+                        <button type="submit" href="<?= base_url() ?>front/login" class="button_style1">Login</button>
+                    <?php } ?>
                 </div>
             </div>
         </form>

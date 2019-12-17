@@ -22,9 +22,9 @@ if (isset($_SESSION['nama_anggota'])) { ?>
             <li class="dropdown active">
                 <a class="dropdown-toggle" href="<?= base_url()?>front/event">Event</a>
             </li>
-            <li class="dropdown active">
+            <!-- <li class="dropdown active">
                 <a class="dropdown-toggle" href="<?= base_url()?>front/project">Project</a>
-            </li>
+            </li> -->
             <li class="dropdown active">
                 <a class="dropdown-toggle" href="<?= base_url()?>front/training">Training</a>
             </li>
@@ -42,4 +42,3 @@ if (isset($_SESSION['nama_anggota'])) { ?>
 </div>
 </div>
 </header>
-<!-- Header -->

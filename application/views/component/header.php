@@ -26,7 +26,7 @@
 					</a>
 
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="<?= base_url()?>profile"><i class="icon-user-plus"></i> Profil</a></li>
+						<!-- <li><a href="<?= base_url()?>profile"><i class="icon-user-plus"></i> Profil</a></li> -->
 						<li><a href="<?= base_url()?>login/logout"><i class="icon-switch2"></i> Logout</a></li>
 					</ul>
 				</li>

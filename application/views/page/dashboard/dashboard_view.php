@@ -42,7 +42,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3">
+    <!-- <div class="col-md-3">
         <div class="panel bg-danger-600">
             <div class="panel-body">
                 <div class="row">
@@ -53,16 +53,16 @@
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                            <a href="<?=base_url()?>project" style="color:#fff">Proyek</a>
+                            <a href="<?=base_url()?>project" style="color:#fff">Project</a>
                         </div>
                         <div class="text-muted">
-                            <a href="<?=base_url()?>project" style="color:#fff"><?= $total_project ?> Proyek</a>
+                            <a href="<?=base_url()?>project" style="color:#fff"><?= $total_project ?> Project</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="col-md-3">
         <div class="panel bg-indigo-400">
@@ -75,10 +75,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="text-bold">
-                        <a href="<?=base_url()?>training" style="color:#fff">Pelatihan</a>
+                        <a href="<?=base_url()?>training" style="color:#fff">Training</a>
                         </div>
                         <div class="text-muted">
-                        <a href="<?=base_url()?>training" style="color:#fff"><?= $total_training; ?> Pelatihan</a>
+                        <a href="<?=base_url()?>training" style="color:#fff"><?= $total_training; ?> Training </a>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                             <a href="<?=base_url()?>unggah_karya" style="color:#fff">Karya</a>
                         </div>
                         <div class="text-muted">
-                            <a href="<?=base_url()?>unggah_karya" style="color:#fff"><?= $total_karya; ?> karya</a>
+                            <a href="<?=base_url()?>unggah_karya" style="color:#fff"><?= $total_karya; ?> Karya </a>
                         </div>
                     </div>
                 </div>

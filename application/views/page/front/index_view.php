@@ -82,7 +82,7 @@
                     <h2 class="title text-blue-400"><a href="<?= base_url()?>front/detail_event/<?= $value->id_event?>"><?= $value->nama_event?></a></h2><br>
                      
                     <div class="wy-text-large">
-                        <?= $value->tanggal?>
+                        <?= date("d-m-Y", strtotime( $value->tanggal)) ?>
                     </div>
                 </div>
             </div>

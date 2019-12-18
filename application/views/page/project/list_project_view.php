@@ -53,7 +53,7 @@ if (!empty($this->session->flashdata('pesan'))) {
                             <td><?= $i;?></td>
                             <td><?= $value->nama_admin?></td>
                             <td><?= $value->nama_channel?></td>
-                            <td><?= $value->tanggal?></td>
+                            <td><?= date("d-m-Y", strtotime($value->tanggal)); ?></td>
                             <td><?php $limit = limit_words($value->isi_project, 10);
                             echo $limit?></td>
                             <td>

@@ -10,7 +10,7 @@
             <div class="form-group row">
                 <label class="col-md-2">Tanggal</label>
                 <div class="col-md-5">
-                    <input type="date" data-date="" id="tanggal" data-date-format="YYYY-mm-dd" value="" name="tanggal" class="form-control" required>
+                    <input type="date" data-date="" id="tanggal" data-date-format="dd-mm-YYYY" value="" name="tanggal" class="form-control" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -48,7 +48,7 @@
                             <img src="<?= base_url() ?>foto_forum/<?= $value->gambar ?>" alt="" style="width: 100%; height: 200px;" />
                             <div class="folio-info"><br>
                                 <?php
-                                $diff = abs(strtotime(date('Y-m-d')) - strtotime($value->tanggal));
+                                $diff = abs(strtotime(date('d-m-Y')) - strtotime($value->tanggal));
 
                                 $years = floor($diff / (365 * 60 * 60 * 24));
                                 $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));

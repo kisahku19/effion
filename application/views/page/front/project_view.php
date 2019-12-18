@@ -10,7 +10,7 @@
 				
 					<div class="folio-info"><br>
 						<h4><a href="<?= base_url()?>front/detail_project/<?= $value->id_project?>"><?= $value->nama_channel?></a></h4>
-						<span class="folio-date"><?= $value->tanggal?></span>
+						<span class="folio-date"><?= date("d-m-Y", strtotime( $value->tanggal)) ?></span>
 					</div>
 				</div>
 			</div>

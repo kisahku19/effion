@@ -52,7 +52,7 @@ function limit_words($string, $word_limit){
                         <td><strong><?= $value->judul_forum ?></strong></td>
                         <td><?php $limited_string = limit_words($value->isi_forum, 10);
                         echo $limited_string; ?></td>
-                        <td><?= $value->tanggal ?></td>
+                        <td><?= date("d-m-Y", strtotime($value->tanggal)); ?></td>
                         <td><a href="<?= base_url() ?>foto_forum/<?= $value->gambar ?>"><img src="<?= base_url() ?>foto_forum/<?= $value->gambar ?>" class="img img-thumbnail" style="width:100px;"></a></td>
                         <td>
                             <div class="btn-group btn-group-xs">

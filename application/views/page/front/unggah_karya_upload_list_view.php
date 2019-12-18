@@ -10,7 +10,7 @@
             <div class="form-group row">
                 <label class="col-md-2">Tanggal</label>
                 <div class="col-md-5">
-                    <input type="date" data-date="" id="tanggal" data-date-format="YYYY-mm-dd" value="" name="tanggal" class="form-control" required>
+                    <input type="date" data-date="" id="tanggal" data-date-format="dd-mm-YYYY" value="" name="tanggal" class="form-control" required>
                 </div>
             </div>
             <div class="form-group row">

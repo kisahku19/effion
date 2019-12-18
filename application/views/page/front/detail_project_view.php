@@ -75,7 +75,7 @@
                     ?>
             </div>
             <h5><?= floor($avg_rating) ?> dari <?= $total_rating ?></h5>
-            <h5>Tanggal : <?= date("d-F-Y", strtotime($detail_project->tanggal)) ?></h5>
+            <h5>Tanggal : <?= date("d-m-Y", strtotime($detail_project->tanggal)) ?></h5>
             <h5>Dibuat Oleh : <?= $detail_project->nama_admin ?></h5>
         </div>
     </div>

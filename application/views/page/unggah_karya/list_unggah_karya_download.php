@@ -35,7 +35,7 @@
                         <tr>  <td><?= $i ?></td>
                           <td><?= $value->nama_lengkap ?></td>
                           <td><strong><?= $value->nama_channel ?></strong></td>
-                          <td><?= date("Y-m-d", strtotime($value->tanggal)); ?></td>
+                          <td><?= date("d-m-Y", strtotime($value->tanggal)); ?></td>
                           <td><?=$value->isi_karya?></td>
                           <td><?= $value->video?>></td>
                         <?php $i++;

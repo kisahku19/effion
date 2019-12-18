@@ -51,7 +51,7 @@ function limit_words($string, $word_limit){
                       <tr>  <td><?= $i ?></td>
                         <td><?= $value->nama_admin ?></td>
                         <td><strong><?= $value->nama_training ?></strong></td>
-                        <td><?= $value->tanggal ?></td>
+                        <td><?= date("d-m-Y", strtotime($value->tanggal)); ?></td>
                         <td><?php $limited_string = limit_words($value->isi_training, 10);
                         echo $limited_string; ?></td>
                         

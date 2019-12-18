@@ -74,7 +74,7 @@
                 ?>
             </div>
             <h5><?= floor($avg_rating) ?> dari <?= $total_rating ?></h5>
-            <h5>Tanggal : <?= $detail_training->tanggal ?></a></h5>
+            <h5>Tanggal : <?= date("d-m-Y", strtotime($detail_training->tanggal)) ?></a></h5>
             <h5>Dibuat Oleh : <?= $detail_training->nama_admin ?></a></h5>
             
         </div>

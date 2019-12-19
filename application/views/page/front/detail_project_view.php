@@ -9,7 +9,7 @@
         });
     }
 
-    // event yang terjadi pada saat kita mengarahkan kursor kita ke sebuah object
+    // project yang terjadi pada saat kita mengarahkan kursor kita ke sebuah object
     function removeHighlight(id) {
         $('#rate-0 li').removeClass('selected');
         $('#rate-0 li').removeClass('highlight');
@@ -24,10 +24,16 @@
             }
         });
         $.ajax({
-            url: "<?= base_url() ?>front/tambah_rating_project",
-            data: 'id=' + id + '&rating=' + $('#rate-0 #rating').val(),
-            type: "POST"
-        });
+                url: "<?= base_url() ?>front/tambah_rating_project",
+                data: 'id=' + id + '&rating=' + $('#rate-0 #rating').val(),
+                type: "POST"
+            })
+            .done(function(data) {
+                alert('Berhasil memberi rating');
+                window.location.reload();
+
+            });
+
     }
 
     function resetRating(id) {
@@ -58,22 +64,62 @@
     <div class="col-md-4">
         <div class="portfolio-meta">
             <h5>Rating</h5>
-            <div id='rate-0'>
-                <input type='hidden' name='rating' id='rating' value='<?= $detail_project->rating ?>'>
-                <ul onMouseOut="resetRating(<?= $detail_project->id_project ?>)">
-                    <?php 
-                    //hitung rata2 rating (floor = pembulatan kebawah, ceil = pembulatan ke atas)
-                    for ($i = 1; $i <= 5; $i++) {
-                        if ($i <= floor($avg_rating)) { 
+            <input type='hidden' name='rating' id='rating' value='<?= $detail_project->rating ?>'>
+            <!--ul onMouseOut="resetRating(<?= $detail_project->id_project ?>)">
+                    <?php for ($i = 1; $i <= 5; $i++) {
+                        if ($i <= $detail_project->rating) {
                             $selected = "selected";
                         } else {
                             $selected = "";
                         } ?>
                         <li class='<?= $selected ?>' onmouseover="highlightStar(this,<?= $detail_project->id_project ?>)" onmouseout="removeHighlight(<?= $detail_project->id_project ?>);" onClick="addRating(this, <?= $detail_project->id_project ?>)">&#9733;</li>
-                    <?php    }
-                    echo "</ul>";
-                    ?>
-            </div>
+                    <?php    } ?>
+                </ul-->
+            <ul>
+                <li class='selected' style='font-size:30px'>&#9733;</li><span style='font-size:25px'><?= $avg_rating ?></span>(<?= $total_rating ?>)
+            </ul>
+            <?php if (isset($_SESSION['username_anggota'])) {
+                if ($cek_rating == 1) { ?>
+                    <ul>
+                        <ul style="display:block" id='addRating'>
+                            <?php for ($i = 1; $i <= 5; $i++) {
+                                        if ($i <= floor($avg_rating)) {
+                                            $selected = "selected";
+                                        } else {
+                                            $selected = "";
+                                        }
+                                        ?>
+                                <li class="<?= $selected ?>" title="Anda sudah memberikan rating">&#9733;</li>
+                            <?php    } ?>
+                        </ul>
+                    </ul>
+                <?php
+                    } else {
+                        ?>
+                    <div id='rate-0'>
+                        <input type='hidden' name='rating' id='rating' value='<?= $detail_project->rating ?>'>
+                        <ul>
+                            <ul style="display:block" id='addRating'>
+                                <?php for ($i = 1; $i <= 5; $i++) { ?>
+                                    <li onmouseover="highlightStar(this,<?= $detail_project->id_project ?>)" onmouseout="removeHighlight(<?= $detail_project->id_project ?>)" onClick="addRating(this, <?= $detail_project->id_project ?>)">&#9733;</li>
+                                <?php    } ?>
+                            </ul>
+                        </ul>
+                    </div>
+                <?php
+                    }
+                } else { ?>
+                <ul>
+                    <a href="<?= base_url() ?>front/login">Silahkan login untuk memberi rating</a>
+                    <ul style="display:block" id='addRating'>
+                        <?php for ($i = 1; $i <= 5; $i++) { ?>
+                            <a href="<?= base_url() ?>front/login">
+                                <li>&#9733;</li>
+                            </a>
+                        <?php    } ?>
+                    </ul>
+                </ul>
+            <?php } ?>
             <h5><?= floor($avg_rating) ?> dari <?= $total_rating ?></h5>
             <h5>Tanggal : <?= date("d-m-Y", strtotime($detail_project->tanggal)) ?></h5>
             <h5>Dibuat Oleh : <?= $detail_project->nama_admin ?></h5>

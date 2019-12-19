@@ -44,7 +44,7 @@ class event extends HSM_Conttroller
             'nama_event' => $this->input->post('nama_event'),
             'isi_event' => $this->input->post('isi_event'),
             'id_kategori' => $this->input->post('id_kategori'),
-            'tanggal' => $this->input->post('tanggal')
+            'tanggal' => date("Y-m-d", strtotime($this->input->post('tanggal')))
         );
 
         $data_forum = array(

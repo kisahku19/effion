@@ -27,7 +27,7 @@
                         <div class="col-md-5">
                             <input type="text" placeholder="Masukan Tanggal Project" name="tanggal" id="tanggal" class="form-control" value="<?php
                                                                                                                                     if (!empty($detail_project)) {
-                                                                                                                                        echo $detail_project->tanggal;
+                                                                                                                                        echo date("d-m-Y", strtotime($detail_project->tanggal));
                                                                                                                                     }
                                                                                                                                     ?>">
                         </div>

@@ -240,6 +240,14 @@ class Front extends CI_Controller
         } else {
             $data['avg_rating'] = 0;
         }
+        if (isset($_SESSION['id_anggota'])) {
+            // cek sudah rating atau belum
+            $data['cek_rating'] = $this->db->where(['id_training' => $id, 'id_anggota' => $_SESSION['id_anggota']])->get('rating_training')->num_rows();
+            // end cek
+        } else {
+            $data['cek_rating'] = 0;
+        }
+
         $data['title'] = 'Detail Training';
         $data['content'] = 'page/front/detail_training_view';
         $this->load->view('page/front/component/wrapper', $data);
@@ -286,6 +294,15 @@ class Front extends CI_Controller
         } else {
             $data['avg_rating'] = 0;
         }
+        if (isset($_SESSION['id_anggota'])) {
+            // cek sudah rating atau belum
+            $data['cek_rating'] = $this->db->where(['id_project' => $id, 'id_anggota' => $_SESSION['id_anggota']])->get('rating_project')->num_rows();
+            // end cek
+        } else {
+            $data['cek_rating'] = 0;
+        }
+
+        
         $data['jumlah_comment'] = $this->db->where(['id_project' => $hasil->id_project, 'id_parent_komentar_project' => 0])->get('komentar_project')->num_rows();
         $data['list_comment'] = $this->db->where(['id_project' => $hasil->id_project, 'id_parent_komentar_project' => 0])->get('komentar_project')->result();
         $data['title'] = 'Detail Project';

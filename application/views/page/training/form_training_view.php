@@ -27,7 +27,7 @@
                         <div class="col-md-5">
                             <input type="text" placeholder="Masukan Tanggal Pelatihan" name="tanggal" id="tanggal" class="form-control" value="<?php
                                                                                                                                     if (!empty($detail_training)) {
-                                                                                                                                        echo $detail_training->tanggal;
+                                                                                                                                        echo date("d-m-Y", strtotime($detail_training->tanggal));
                                                                                                                                     }
                                                                                                                                     ?>">
                         </div>

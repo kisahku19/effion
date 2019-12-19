@@ -55,7 +55,7 @@
                         <div class="col-md-5">
                             <input type="text" placeholder="Masukan tanggal Event" name="tanggal" id="tanggal" class="form-control" value="<?php
                                                                                                 if (!empty($detail_event)) {
-                                                                                                    echo $detail_event->tanggal;
+                                                                                                    echo date("d-m-Y", strtotime($detail_event->tanggal));
                                                                                                 }
                                                                                                 ?>">
                         </div>

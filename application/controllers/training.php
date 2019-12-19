@@ -39,7 +39,7 @@ class Training extends HSM_Conttroller{
         $data_arr = array(
             'id_admin' => $_SESSION['id_admin'],
             'nama_training' => $this->input->post('nama_training'),
-            'tanggal' => $this->input->post('tanggal'),
+            'tanggal' => date("Y-m-d", strtotime($this->input->post('tanggal'))),
             'isi_training' => $this->input->post('isi_training')
         );
         if (!empty($id)) {

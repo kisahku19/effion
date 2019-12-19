@@ -134,7 +134,7 @@
                         <ul>
                             <ul style="display:block" id='addRating'>
                                 <?php for ($i = 1; $i <= 5; $i++) { ?>
-                                    <li onmouseover="highlightStar(this,<?= $detail_event->id_event ?>)" onmouseout="removeHighlight(<?= $detail_event->id_event ?>);" onClick="addRating(this, <?= $detail_event->id_event ?>)">&#9733;</li>
+                                    <li onmouseover="highlightStar(this,<?= $detail_event->id_event ?>)" onmouseout="removeHighlight(<?= $detail_event->id_event ?>)" onClick="addRating(this, <?= $detail_event->id_event ?>)">&#9733;</li>
                                 <?php    } ?>
                             </ul>
                         </ul>

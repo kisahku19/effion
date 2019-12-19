@@ -39,7 +39,7 @@ class Project extends HSM_Conttroller
         $data_arr = array(
             'id_admin' => $_SESSION['id_admin'],
             'nama_channel' => $this->input->post('nama_channel'),
-            'tanggal' => $this->input->post('tanggal'),
+            'tanggal' => date("Y-m-d", strtotime($this->input->post('tanggal'))),
             'isi_project' => $this->input->post('isi_project'),
             'video' => $this->input->post('video')
         );

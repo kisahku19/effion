@@ -87,7 +87,7 @@
             parserRules: wysihtml5ParserRules
         });
         $('#tanggal').pickadate({
-            format: 'yyyy-mm-dd',
+            format: 'dd-mm-yyyy',
             formatSubmit: 'yyyy-mm-dd',
         });
     });

@@ -214,9 +214,9 @@ class Front extends CI_Controller
             $data['cek_rating'] = 0;
         }
 
-        $data['detail_forum'] = $this->forum_model->get_forum_by_id($hasil->id_forum);
-        $data['jumlah_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0,'status_komentar'=>1])->get('komentar_forum')->num_rows();
-        $data['list_comment'] = $this->db->where(['id_forum' => $hasil->id_forum, 'id_parent_komentar_forum' => 0,'status_komentar'=>1])->order_by('waktu','desc')->get('komentar_forum')->result();
+        //$data['detail_forum'] = $this->forum_model->get_forum_by_id($hasil->id_event);
+        $data['jumlah_comment'] = $this->db->where(['id_event' => $hasil->id_event, 'id_parent_komentar_event' => 0,'status_komentar'=>1])->get('komentar_event')->num_rows();
+        $data['list_comment'] = $this->db->where(['id_event' => $hasil->id_event, 'id_parent_komentar_event' => 0,'status_komentar'=>1])->order_by('waktu','desc')->get('komentar_event')->result();
         
         $data['title'] = 'Detail Event';
         $data['content'] = 'page/front/detail_event_view';
@@ -349,13 +349,14 @@ class Front extends CI_Controller
             date_default_timezone_set('Asia/Jakarta');
             $data_komentar = array(
                 'nama' => $this->session->userdata('nama_lengkap'),
-                'id_forum' => $this->input->post('id_forum'),
+                'id_event' => $this->input->post('id_event'),
                 'isi_komentar' => $this->input->post('isi_komentar'),
-                'waktu' => date('d-m-Y H:i:s'),
+                'waktu' => date('Y-m-d H:i:s'),
                 'status_komentar' => 0,
             );
+            //print_r($data_komentar);exit;
 
-            $this->db->insert('komentar_forum', $data_komentar);
+            $this->db->insert('komentar_event', $data_komentar);
             $this->session->set_flashdata('pesan', 'Komentar anda akan ditampilkan setelah di setujui oleh admin');
             redirect('front/detail_event/' . $id, 'refresh');
         } else {

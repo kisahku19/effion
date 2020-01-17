@@ -192,7 +192,7 @@
                                 <?= $value->isi_komentar ?><br>
                             </div>
                             <div>
-                                <?php $balasan = $this->db->where(['id_forum' => $detail_forum->id_forum, 'id_parent_komentar_forum' => $value->id_komentar_forum, 'status_komentar' => 1])->order_by('waktu', 'desc')->get('komentar_forum'); ?>
+                                <?php $balasan = $this->db->where(['id_event' => $detail_event->id_event, 'id_parent_komentar_event' => $value->id_komentar_event, 'status_komentar' => 1])->order_by('waktu', 'desc')->get('komentar_event'); ?>
                                 <?php if ($balasan->num_rows() > 0) : ?>
                                     <br>
                                     <h5><b>Balasan:</h5></b>
@@ -203,7 +203,7 @@
                                                 foreach ($balasan->result() as $key => $balas) :
                                                     if ($i == 4) {
                                                         ?>
-                                            <div id="showhide-<?= $value->id_komentar_forum ?>" style="display:none">
+                                            <div id="showhide-<?= $value->id_komentar_event ?>" style="display:none">
                                             <?php } ?>
                                             <div class="panel panel-success" style="margin-left:30px;">
                                                 <div class="panel-body" style="vertical_align:middle;">
@@ -224,7 +224,7 @@
                             <?php if ($balasan->num_rows() > 3) { ?>
                                 <div class="col-md-7 comment-content" style="margin-left:18px;">
                                     <span>
-                                        <button class="button_style1" id="button_showhide-<?= $value->id_komentar_forum ?>" onclick="showBalasan(<?= $value->id_komentar_forum ?>)">Selengkapnya....</button>
+                                        <button class="button_style1" id="button_showhide-<?= $value->id_komentar_event ?>" onclick="showBalasan(<?= $value->id_komentar_event ?>)">Selengkapnya....</button>
                                     </span>
                                 </div>
                             <?php } ?>
@@ -232,7 +232,7 @@
                         <div class="col-md-5 comment-content">
                             <?php if (isset($_SESSION['username_anggota'])) { ?>
                                 <span>
-                                    <a class="button_style2" data-toggle="modal" href='#<?= $value->id_komentar_forum ?>'>Balas</a>
+                                    <a class="button_style2" data-toggle="modal" href='#<?= $value->id_komentar_event?>'>Balas</a>
                                 </span>
                             <?php } else { ?>
                                 <span>
@@ -242,7 +242,7 @@
                         </div>
                     </div>
                     <form method="post" action="<?= base_url('komentar/balas_komentar_event/' . $detail_event->id_event) ?>">
-                        <div class="modal fade" id="<?= $value->id_komentar_forum ?>">
+                        <div class="modal fade" id="<?= $value->id_komentar_event ?>">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -250,8 +250,8 @@
                                         <h4 class="modal-title">Balas Komentar <?= $value->nama ?></h4>
                                     </div>
                                     <div class="modal-body">
-                                        <input type="hidden" name="id_forum" value="<?= $detail_forum->id_forum ?>" />
-                                        <input type="hidden" name="id_parent_komentar_forum" value="<?= $value->id_komentar_forum ?>" />
+                                        <input type="hidden" name="id_event" value="<?= $detail_event->id_event ?>" />
+                                        <input type="hidden" name="id_parent_komentar_event" value="<?= $value->id_komentar_event ?>" />
                                         <textarea name="isi_komentar" id="addComment" row="8" placeholder="balas komentar" class='form-control'></textarea>
                                     </div>
                                     <div class="modal-footer">
@@ -289,7 +289,7 @@
         <form method="post" action="<?= base_url('front/buat_komentar_event/' . $detail_event->id_event) ?>">
             <div class="row">
                 <div class="col-md-12">
-                    <input type="hidden" value="<?= $detail_forum->id_forum ?>" name="id_forum">
+                    <input type="hidden" value="<?= $detail_event->id_event ?>" name="id_event">
                     <textarea class="form-control" <?php if (!isset($_SESSION['username_anggota'])) {
                                                         echo "disabled";
                                                     } ?> id="addComment" rows="8" placeholder="your message" name="isi_komentar"></textarea>

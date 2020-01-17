@@ -47,12 +47,12 @@ class event extends HSM_Conttroller
             'tanggal' => date("Y-m-d", strtotime($this->input->post('tanggal')))
         );
 
-        $data_forum = array(
+        /*$data_forum = array(
             'nama' => $this->input->post('nama_event'),
             'judul_forum' => $this->input->post('nama_event'),
             'tanggal' => date('Y-m-d'),
             'isi_forum' => $this->input->post('isi_event')
-        );
+        );*/
 
         if (!empty($id)) {
             if ($this->upload->do_upload('gambar')) {
@@ -77,14 +77,14 @@ class event extends HSM_Conttroller
                 if ($this->event_model->insert_event($data_arr)) {
                     $id_event = $this->db->insert_id();
                     //create forum for comment
-                    $data_forum['gambar'] = $data_arr['gambar'];
-                    $this->forum_model->insert_forum($data_forum);
-                    $id_forum = $this->db->insert_id();
+                    //$data_forum['gambar'] = $data_arr['gambar'];
+                    //$this->forum_model->insert_forum($data_forum);
+                    //$id_forum = $this->db->insert_id();
                     //end create forum for comment
 
                     //update add forum_id to event table
-                    $data_update = array('id_forum' => $id_forum);
-                    $this->event_model->update_event($id_event, $data_update);
+                    //$data_update = array('id_forum' => $id_forum);
+                    //$this->event_model->update_event($id_event, $data_update);
                     //end update add forum_id to event table
                     $this->session->set_flashdata('pesan', 'Event berhsail di tambahkan');
                     redirect('event', 'refresh');

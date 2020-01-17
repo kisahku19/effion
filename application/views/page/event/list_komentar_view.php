@@ -51,11 +51,11 @@ function limit_words($string, $word_limit){
                         <td>
                             <div class="btn-group btn-group-xs">
                                 <?php if ($value->status_komentar==1) { ?>
-                                <a href="<?= base_url() ?>komentar/update_status/<?= $value->id_komentar_forum ?>/0" class="btn btn-primary" alt="Tolak"><i class="icon icon-cross"></i></a>
+                                <a href="<?= base_url() ?>komentar/update_status/<?= $value->id_komentar_event ?>/0" class="btn btn-primary" alt="Tolak"><i class="icon icon-cross"></i></a>
                                 <?php } else { ?>
-                                <a href="<?= base_url() ?>komentar/update_status/<?= $value->id_komentar_forum ?>/1" class="btn btn-primary" alt="Terima"><i class="icon icon-checkmark"></i></a>
+                                <a href="<?= base_url() ?>komentar/update_status/<?= $value->id_komentar_event ?>/1" class="btn btn-primary" alt="Terima"><i class="icon icon-checkmark"></i></a>
                                 <?php } ?>
-                                <button type="button" class="btn btn-danger hapus-komentar" id="<?= $value->id_komentar_forum?>" alt="Hapus"><i class="icon icon-trash"></i></button>
+                                <button type="button" class="btn btn-danger hapus-komentar" id="<?= $value->id_komentar_event?>" alt="Hapus"><i class="icon icon-trash"></i></button>
                             </div>
                         </td></tr>
                     <?php $i++; }

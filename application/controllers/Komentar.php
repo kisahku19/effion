@@ -9,9 +9,9 @@ class Komentar extends CI_Controller
 
         $data['title'] = 'Komentar Event';
         $data['content'] = 'page/event/list_komentar_view';
-        $data['all_comment'] = $this->db->order_by('waktu','desc')->get('komentar_forum')->result();
-        $data['unapprove'] = $this->db->where('status_komentar', 0)->order_by('waktu','desc')->get('komentar_forum')->result();
-        $data['approve'] = $this->db->where('status_komentar', 1)->order_by('waktu','desc')->get('komentar_forum')->result();
+        $data['all_comment'] = $this->db->order_by('waktu','desc')->get('komentar_event')->result();
+        $data['unapprove'] = $this->db->where('status_komentar', 0)->order_by('waktu','desc')->get('komentar_event')->result();
+        $data['approve'] = $this->db->where('status_komentar', 1)->order_by('waktu','desc')->get('komentar_event')->result();
         $data['page_js'] = 'page/event/page_js';
         $this->load->view('wrapper', $data);
     }
@@ -19,7 +19,7 @@ class Komentar extends CI_Controller
     {
         date_default_timezone_set('Asia/Jakarta');
         $data = [
-            'id_parent_komentar_forum' => $id,
+            'id_parent_komentar_event' => $id,
             'id_forum' => $this->input->post('id_forum'),
             'isi_komentar' => $this->input->post('isi_komentar'),
             'nama' => $this->session->userdata('nama_lengkap'),
@@ -40,14 +40,14 @@ class Komentar extends CI_Controller
             redirect('front/detail_event/' . $id);
         } else {
             $data = [
-                'id_parent_komentar_forum' => $this->input->post('id_parent_komentar_forum' ),
-                'id_forum' => $this->input->post('id_forum'),
+                'id_parent_komentar_event' => $this->input->post('id_parent_komentar_event' ),
+                'id_event' => $this->input->post('id_event'),
                 'isi_komentar' => $this->input->post('isi_komentar'),
                 'nama' => $this->session->userdata('nama_lengkap'),
                 'waktu' => date('Y-m-d H:i:s'),
                 'status_komentar' => 0,
             ];
-            $this->db->insert('komentar_forum', $data);
+            $this->db->insert('komentar_event', $data);
             $this->session->set_flashdata('pesan', 'Komentar anda akan ditampilkan setelah di setujui oleh admin');
             redirect('front/detail_event/' . $id);
         }
@@ -70,8 +70,8 @@ class Komentar extends CI_Controller
     public function update_status($id, $status)
     {
         $this->db->set('status_komentar', $status);
-        $this->db->where('id_komentar_forum', $id);
-        $this->db->update('komentar_forum');
+        $this->db->where('id_komentar_event', $id);
+        $this->db->update('komentar_event');
         redirect('komentar');
     }
 

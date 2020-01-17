@@ -45,4 +45,20 @@ ALTER TABLE `komentar_forum` ADD `status_komentar` INT(3) NOT NULL AFTER `id_par
 ==== ganti tanggal di komentar ====
 ALTER TABLE `komentar_forum` CHANGE `waktu` `waktu` DATETIME NOT NULL;
 
-=====
+===== end ganti tanggal =====
+
+===== ganti table forum ke event buat komentar =====
+CREATE TABLE `komentar_event` (
+ `id_komentar_event` int(11) NOT NULL AUTO_INCREMENT,
+ `nama` varchar(128) NOT NULL,
+ `id_event` int(11) NOT NULL,
+ `isi_komentar` longtext NOT NULL,
+ `waktu` datetime NOT NULL,
+ `id_parent_komentar_event` int(11) NOT NULL,
+ `status_komentar` int(3) NOT NULL,
+ PRIMARY KEY (`id_komentar_event`),
+ KEY `id_forum` (`id_event`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1
+
+===== end ganti table =====
+

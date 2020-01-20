@@ -46,7 +46,7 @@ function limit_words($string, $word_limit){
                       <tr>  <td><?= $i ?></td>
                         <td><?= $value->nama ?></td>
                         <td><?= $value->isi_komentar ?></td>
-                        <td><?= date("d-m-Y", strtotime($value->waktu)) ?></td>
+                        <td><?= date("d-m-Y H:i:s", strtotime($value->waktu)) ?></td>
                         <td><?= ($value->status_komentar==1)?'Aktif':'Tidak Aktif' ?></td>
                         <td>
                             <div class="btn-group btn-group-xs">

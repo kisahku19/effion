@@ -142,7 +142,7 @@
                     <div class="col-md-7 comment-content">
                         <div class="comment-meta">
                             <span class="comment-author"><?= $value->nama ?></span>
-                            <span class="comment-date"><?= date("d-m-Y", strtotime($value->waktu)) ?></span>
+                            <span class="comment-date"><?= date("d-m-Y H:i:s", strtotime($value->waktu)) ?></span>
                         </div>
                         <div class="comment-excerpt">
                             <?= $value->isi_komentar ?><br>
@@ -157,7 +157,7 @@
                                     <div class="panel panel-success" style="margin-left:30px;">
                                         <div class="panel-body" style="vertical_align:middle;">
                                             <span style="font-size:21px;font-family:bitter;"><?= $balas->nama ?></span>
-                                            <span style="color:#92a5a1;font-family: Open Sans; margin-left: 25px;"> <?= date("d-m-Y", strtotime($value->waktu)) ?> </span>
+                                            <span style="color:#92a5a1;font-family: Open Sans; margin-left: 25px;"> <?= date("d-m-Y H:i:s", strtotime($value->waktu)) ?> </span>
                                             <hr>
                                             <?= $balas->isi_komentar ?>
                                         </div>

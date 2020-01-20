@@ -13,7 +13,7 @@
     <div class="col-md-4">
         <div class="portfolio-meta">
             <h5>Dibuat Oleh : <?= $_SESSION['username_anggota'] ?></h5>
-            <h5>Tanggal : <?= $detail_unggah_karya->tanggal ?></h5>
+            <h5>Tanggal : <?= date("d-m-Y", strtotime($detail_unggah_karya->tanggal)) ?></h5>
         </div>
     </div>
 </div>

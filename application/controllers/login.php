@@ -28,13 +28,8 @@ class Login extends HSM_Conttroller
             $data_arr['nama_lengkap'] = $hasil->nama_admin;
 
             $this->session->set_userdata($data_arr);
-            if ($this->session->userdata('grup') == 'admin') {
-                redirect('dashboard');
-            } elseif ($this->session->userdata('grup') == 'wali_murid') {
-                redirect('dashboard/dashboard_wali');
-            } else {
-                redirect('dashboard/dashboard_siswa');
-            }
+            redirect('dashboard');
+            
         } else {
             redirect('login');
         }

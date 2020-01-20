@@ -303,8 +303,8 @@ class Front extends CI_Controller
         }
 
         
-        $data['jumlah_comment'] = $this->db->where(['id_project' => $hasil->id_project, 'id_parent_komentar_project' => 0])->get('komentar_project')->num_rows();
-        $data['list_comment'] = $this->db->where(['id_project' => $hasil->id_project, 'id_parent_komentar_project' => 0])->get('komentar_project')->result();
+        $data['jumlah_comment'] = $this->db->where(['id_project' => $hasil->id_project, 'id_parent_komentar_project' => 0,'status_komentar'=>1])->get('komentar_project')->num_rows();
+        $data['list_comment'] = $this->db->where(['id_project' => $hasil->id_project, 'id_parent_komentar_project' => 0,'status_komentar'=>1])->get('komentar_project')->result();
         $data['title'] = 'Detail Project';
         $data['content'] = 'page/front/detail_project_view';
         $this->load->view('page/front/component/wrapper', $data);
@@ -372,10 +372,12 @@ class Front extends CI_Controller
                 'nama' => $this->session->userdata('nama_lengkap'),
                 'id_project' => $this->input->post('id_project'),
                 'isi_komentar' => $this->input->post('isi_komentar'),
-                'waktu' => date('d-m-Y H:i:s')
+                'status_komentar'=>0,
+                'waktu' => date('Y-m-d H:i:s')
             );
 
             $this->db->insert('komentar_project', $data_komentar);
+            $this->session->set_flashdata('pesan', 'Komentar anda akan ditampilkan setelah di setujui oleh admin');
             redirect('front/detail_project/' . $data_komentar['id_project'], 'refresh');
         } else {
             redirect('front/login', 'refresh');

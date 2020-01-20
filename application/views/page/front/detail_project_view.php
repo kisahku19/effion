@@ -142,13 +142,13 @@
                     <div class="col-md-7 comment-content">
                         <div class="comment-meta">
                             <span class="comment-author"><?= $value->nama ?></span>
-                            <span class="comment-date"><?= $value->waktu ?></span>
+                            <span class="comment-date"><?= date("d-m-Y", strtotime($value->waktu)) ?></span>
                         </div>
                         <div class="comment-excerpt">
                             <?= $value->isi_komentar ?><br>
                         </div>
                         <div>
-                            <?php $balasan = $this->db->where(['id_project' => $detail_project->id_project, 'id_parent_komentar_project' => $value->id_komentar_project])->get('komentar_project'); ?>
+                            <?php $balasan = $this->db->where(['id_project' => $detail_project->id_project, 'id_parent_komentar_project' => $value->id_komentar_project,'status_komentar'=>1])->get('komentar_project'); ?>
                             <?php if ($balasan->num_rows() > 0) : ?>
                                 <br>
                                 <h5><b>Balasan:</h5></b>
@@ -157,7 +157,7 @@
                                     <div class="panel panel-success" style="margin-left:30px;">
                                         <div class="panel-body" style="vertical_align:middle;">
                                             <span style="font-size:21px;font-family:bitter;"><?= $balas->nama ?></span>
-                                            <span style="color:#92a5a1;font-family: Open Sans; margin-left: 25px;"> <?= $balas->waktu ?> </span>
+                                            <span style="color:#92a5a1;font-family: Open Sans; margin-left: 25px;"> <?= date("d-m-Y", strtotime($value->waktu)) ?> </span>
                                             <hr>
                                             <?= $balas->isi_komentar ?>
                                         </div>

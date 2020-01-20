@@ -61,9 +61,11 @@ class Komentar extends CI_Controller
             'id_project' => $this->input->post('id_project'),
             'isi_komentar' => $this->input->post('isi_komentar'),
             'nama' => $this->session->userdata('nama_lengkap'),
-            'waktu' => date('Y-m-d H:i:s')
+            'waktu' => date('Y-m-d H:i:s'),
+            'status_komentar'=>0,
         ];
         $this->db->insert('komentar_project', $data);
+        $this->session->set_flashdata('pesan', 'Komentar anda akan ditampilkan setelah di setujui oleh admin');
         redirect('front/detail_project/' . $this->input->post('id_project'));
     }
 

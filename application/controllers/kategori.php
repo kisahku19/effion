@@ -42,7 +42,7 @@ class Kategori extends HSM_Conttroller{
             'nama_kategori' => $this->input->post('nama'),
         );
         if (!empty($id)) {
-            $data_arr['updated_at'] = date('Y-m-d H:i:s');
+            //$data_arr['updated_at'] = date('Y-m-d H:i:s');
             if ($this->kategori_model->update_kategori($id, $data_arr)) {
                 $this->session->set_flashdata('pesan', 'kategori berhasil update');
                 redirect('kategori', 'refresh');
@@ -50,7 +50,7 @@ class Kategori extends HSM_Conttroller{
                $this->session->set_flashdata('pesan', 'kategori gagal diupdate');
             }
         }else{
-            $data_arr['created_at'] = date('Y-m-d H:i:s');
+            //$data_arr['created_at'] = date('Y-m-d H:i:s');
             if ($this->kategori_model->insert_kategori($data_arr)) {
                 $this->session->set_flashdata('pesan', 'kategori berhasil disimpan');
                 redirect('kategori', 'refresh');

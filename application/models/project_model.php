@@ -54,4 +54,13 @@ class Project_model extends CI_Model{
              return false;
          }
      }
+
+     function delete_komentar($id){
+        $this->db->where('id_komentar_project', $id);
+        if ($this->db->delete('komentar_project')) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

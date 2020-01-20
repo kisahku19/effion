@@ -86,4 +86,36 @@ class Project extends HSM_Conttroller
 
         $this->pdf->load_view('wrapper', $data);
     }
+
+    public function komentar()
+    {
+
+        $data['title'] = 'Komentar Project';
+        $data['content'] = 'page/project/list_komentar_view';
+        $data['all_comment'] = $this->db->order_by('waktu','desc')->get('komentar_project')->result();
+        $data['unapprove'] = $this->db->where('status_komentar', 0)->order_by('waktu','desc')->get('komentar_project')->result();
+        $data['approve'] = $this->db->where('status_komentar', 1)->order_by('waktu','desc')->get('komentar_project')->result();
+        $data['page_js'] = 'page/project/page_js';
+        $this->load->view('wrapper', $data);
+    }
+
+    public function update_status_komentar($id, $status)
+    {
+        $this->db->set('status_komentar', $status);
+        $this->db->where('id_komentar_project', $id);
+        $this->db->update('komentar_project');
+        redirect('project/komentar');
+    }
+
+    public function hapus_komentar_ajax($id)
+    {
+        $this->load->model('event_model');
+        if ($this->project_model->delete_komentar($id)) {
+            $data['pesan'] = 'komentar berhasil di hapus';
+        } else {
+            $data['pesan'] = 'komentar gagal di hapus';
+        }
+
+        echo json_encode($data);
+    }
 }

@@ -24,7 +24,7 @@ class Login extends HSM_Conttroller
             $data_arr['id_admin'] = $hasil->id_admin;
             $data_arr['username'] = $hasil->username;
             $data_arr['password'] = $hasil->pass;
-            $data_arr['grup'] = $hasil->grup;
+            //$data_arr['grup'] = $hasil->grup;
             $data_arr['nama_lengkap'] = $hasil->nama_admin;
 
             $this->session->set_userdata($data_arr);

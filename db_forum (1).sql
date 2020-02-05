@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2020 at 02:46 AM
+-- Generation Time: Jan 23, 2020 at 01:59 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.16
 
@@ -32,16 +32,15 @@ CREATE TABLE `admin` (
   `id_admin` int(11) NOT NULL,
   `nama_admin` varchar(128) NOT NULL,
   `username` varchar(128) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `grup` varchar(20) NOT NULL
+  `password` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `nama_admin`, `username`, `password`, `grup`) VALUES
-(1, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin');
+INSERT INTO `admin` (`id_admin`, `nama_admin`, `username`, `password`) VALUES
+(1, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
@@ -122,20 +121,19 @@ CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(50) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `status` int(2) NOT NULL
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kategori`
 --
 
-INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `created_at`, `updated_at`, `status`) VALUES
-(1, 'Kuliner', '2019-10-10 08:55:56', '2019-10-10 10:43:20', 0),
-(2, 'Sport', '2019-10-10 09:11:51', '2019-10-11 05:24:50', 0),
-(3, 'Videografi', '2019-10-10 09:14:46', '2019-10-11 05:25:08', 0),
-(4, 'Musik', '2019-10-10 09:15:56', '2019-10-11 05:25:17', 0),
-(5, 'Teknologi', '2019-10-10 09:16:04', '2019-10-11 05:25:29', 0);
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `created_at`, `updated_at`) VALUES
+(1, 'Kuliner', '2019-10-10 08:55:56', '2020-01-20 08:44:09'),
+(2, 'Sport', '2019-10-10 09:11:51', '2019-10-11 05:24:50'),
+(3, 'Videografi', '2019-10-10 09:14:46', '2019-10-11 05:25:08'),
+(4, 'Musik', '2019-10-10 09:15:56', '2019-10-11 05:25:17'),
+(5, 'Teknologi', '2019-10-10 09:16:04', '2019-10-11 05:25:29');
 
 -- --------------------------------------------------------
 
@@ -173,8 +171,17 @@ CREATE TABLE `komentar_project` (
   `id_project` int(11) NOT NULL,
   `isi_komentar` longtext NOT NULL,
   `waktu` varchar(100) NOT NULL,
-  `id_parent_komentar_project` int(11) NOT NULL
+  `id_parent_komentar_project` int(11) NOT NULL,
+  `status_komentar` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `komentar_project`
+--
+
+INSERT INTO `komentar_project` (`id_komentar_project`, `nama`, `id_project`, `isi_komentar`, `waktu`, `id_parent_komentar_project`, `status_komentar`) VALUES
+(1, 'ndo', 5, '<p>keren pisan</p>', '20-01-2020 15:17:33', 0, 0),
+(2, 'dnl', 5, '<p>setuju&nbsp;</p>', '2020-01-20 15:17:55', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -345,7 +352,8 @@ ALTER TABLE `anggota`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`id_event`),
-  ADD KEY `id_user` (`id_admin`);
+  ADD KEY `id_user` (`id_admin`),
+  ADD KEY `id_kategori` (`id_kategori`);
 
 --
 -- Indexes for table `kategori`
@@ -379,21 +387,24 @@ ALTER TABLE `project`
 --
 ALTER TABLE `rating_event`
   ADD PRIMARY KEY (`id_ratingevent`),
-  ADD UNIQUE KEY `id_event` (`id_event`,`id_anggota`);
+  ADD UNIQUE KEY `id_event` (`id_event`,`id_anggota`),
+  ADD KEY `id_anggota` (`id_anggota`);
 
 --
 -- Indexes for table `rating_project`
 --
 ALTER TABLE `rating_project`
   ADD PRIMARY KEY (`id_ratingproject`),
-  ADD UNIQUE KEY `id_project` (`id_project`,`id_anggota`);
+  ADD UNIQUE KEY `id_project` (`id_project`,`id_anggota`),
+  ADD KEY `id_anggota` (`id_anggota`);
 
 --
 -- Indexes for table `rating_training`
 --
 ALTER TABLE `rating_training`
   ADD PRIMARY KEY (`id_ratingtraining`),
-  ADD UNIQUE KEY `id_training` (`id_training`,`id_anggota`);
+  ADD UNIQUE KEY `id_training` (`id_training`,`id_anggota`),
+  ADD KEY `id_anggota` (`id_anggota`);
 
 --
 -- Indexes for table `training`
@@ -447,7 +458,7 @@ ALTER TABLE `komentar_event`
 -- AUTO_INCREMENT for table `komentar_project`
 --
 ALTER TABLE `komentar_project`
-  MODIFY `id_komentar_project` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_komentar_project` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `project`
@@ -499,7 +510,14 @@ ALTER TABLE `admin`
 -- Constraints for table `event`
 --
 ALTER TABLE `event`
-  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`);
+  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`),
+  ADD CONSTRAINT `event_ibfk_2` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`);
+
+--
+-- Constraints for table `komentar_event`
+--
+ALTER TABLE `komentar_event`
+  ADD CONSTRAINT `komentar_event_ibfk_1` FOREIGN KEY (`id_event`) REFERENCES `event` (`id_event`);
 
 --
 -- Constraints for table `komentar_project`
@@ -511,13 +529,22 @@ ALTER TABLE `komentar_project`
 -- Constraints for table `rating_event`
 --
 ALTER TABLE `rating_event`
-  ADD CONSTRAINT `rating_event_ibfk_1` FOREIGN KEY (`id_event`) REFERENCES `event` (`id_event`);
+  ADD CONSTRAINT `rating_event_ibfk_1` FOREIGN KEY (`id_event`) REFERENCES `event` (`id_event`),
+  ADD CONSTRAINT `rating_event_ibfk_2` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id_anggota`);
+
+--
+-- Constraints for table `rating_project`
+--
+ALTER TABLE `rating_project`
+  ADD CONSTRAINT `rating_project_ibfk_1` FOREIGN KEY (`id_project`) REFERENCES `project` (`id_project`),
+  ADD CONSTRAINT `rating_project_ibfk_2` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id_anggota`);
 
 --
 -- Constraints for table `rating_training`
 --
 ALTER TABLE `rating_training`
-  ADD CONSTRAINT `rating_training_ibfk_1` FOREIGN KEY (`id_training`) REFERENCES `training` (`id_training`);
+  ADD CONSTRAINT `rating_training_ibfk_1` FOREIGN KEY (`id_training`) REFERENCES `training` (`id_training`),
+  ADD CONSTRAINT `rating_training_ibfk_2` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id_anggota`);
 
 --
 -- Constraints for table `training`

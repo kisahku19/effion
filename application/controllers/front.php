@@ -9,7 +9,7 @@ class Front extends CI_Controller
         parent::__construct();
         $this->load->model('event_model');
         $this->load->model('training_model');
-        $this->load->model('forum_model');
+        // $this->load->model('forum_model');
         $this->load->model('project_model');
         $this->load->model('unggah_karya_model');
     }

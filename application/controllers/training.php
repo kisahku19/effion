@@ -104,6 +104,6 @@ class Training extends HSM_Conttroller{
         $data['list_training'] = $this->training_model->get_all_training();
         $data['page_js'] = 'page/training/page_js';
 
-        $this->pdf->load_view('wrapper', $data);
+        $this->pdf->load_view($data['content'], $data);
     }
 }

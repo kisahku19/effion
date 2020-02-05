@@ -1,12 +1,29 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 <div class="row">
     <div class="col-md-12">
         <div class="panel">
         <div class="panel-heading">
-                <h5 class="panel-title">
+                <h2 class="panel-title">
                     <?= $title; ?>
                 </h5>
             </div>
-            <table class="table table-responsive" id="table-anggota">
+            <table >
                 <thead>
                     <tr>
                         <th>
@@ -38,7 +55,7 @@
                           <td><?= $value->tanggal ?></td>
                           <td><?=$value->isi_training?></td>
                           
-                          <td><a href="<?= base_url() ?>foto_training/<?= $value->gambar ?>"><img src="<?= base_url() ?>foto_training/<?= $value->gambar ?>" class="img img-thumbnail" style="width:100px;"></a></td>
+                          <td><a href="<?= base_url() ?>foto_training/<?= $value->gambar ?>"><img src="<?= base_url() ?>foto_training/<?= $value->gambar ?>" style="width:100px;"></a></td>
                         </tr>
                       <?php $i++; }
                     ?>

@@ -84,7 +84,7 @@ class Project extends HSM_Conttroller
         $data['list_project'] = $this->project_model->get_all_project();
         $data['page_js'] = 'page/project/page_js';
 
-        $this->pdf->load_view('wrapper', $data);
+        $this->pdf->load_view($data['content'], $data);
     }
 
     public function komentar()

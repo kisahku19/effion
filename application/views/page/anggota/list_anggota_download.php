@@ -1,13 +1,29 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 <div class="row">
     <div class="col-md-12">
         <div class="panel">
         <div class="panel-heading">
-                <h5 class="panel-title">
+                <h2 class="panel-title">
                     <?= $title; ?>
                 </h5>
             </div>
-            <table class="table table-responsive" id="table-anggota">
-                <thead>
+            <table id="table-anggota" border="0.5">
                     <tr>
                         <th>
                             NO
@@ -31,8 +47,6 @@
                             GAMBAR
                         </th>
                     </tr>
-                </thead>
-                <tbody>
                     <?php $i = 1;
                     foreach ($list_anggota as $value) { ?>
                         <tr>
@@ -42,13 +56,12 @@
                             <td><?= $value->no_hp ?></td>
                             <td><?= $value->domisili ?></td>
                             <td><?= $value->username ?></td>
-                            <td><img src="<?= base_url() ?>foto_anggota/<?= $value->gambar ?>" class="img img-thumbnail"></td>
+                            <td><img src="<?= base_url() ?>foto_anggota/<?= $value->gambar ?>" width="100px"></td>
                             
                         </tr>
                         <?php $i++;
                     }
                     ?>
-                </tbody>
             </table>
         </div>
     </div>

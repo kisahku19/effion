@@ -4,15 +4,32 @@ function limit_words($string, $word_limit){
     return implode(" ",array_splice($words,0,$word_limit));
 }
 ?>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 <div class="row">
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-heading">
-                <h5 class="panel-title">
+                <h2 class="panel-title">
                     <?= $title; ?>
                 </h5>
             </div>
-            <table class="table table-responsive" id="table-event">
+            <table>
                 <thead>
                     <tr>
                         <th>
@@ -48,7 +65,7 @@ function limit_words($string, $word_limit){
                         echo $limited_string; ?></td>
                         <td><?= $value->nama_kategori ?></td>
                         <td><?= $value->tanggal ?></td>
-                        <td><a href="<?= base_url() ?>foto_event/<?= $value->gambar ?>"><img src="<?= base_url() ?>foto_event/<?= $value->gambar ?>" class="img img-thumbnail" style="width:100px;"></a></td>
+                        <td><a href="<?= base_url() ?>foto_event/<?= $value->gambar ?>"><img src="<?= base_url() ?>foto_event/<?= $value->gambar ?>" style="width:100px;"></a></td>
                       </tr>
                     <?php $i++; }
                 ?>

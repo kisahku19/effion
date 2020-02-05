@@ -114,6 +114,6 @@ class Unggah_karya extends HSM_Conttroller{
         $data['list_unggah_karya'] = $this->unggah_karya_model->get_all_unggah_karya();
         $data['page_js'] = 'page/unggah_karya/page_js';
 
-        $this->pdf->load_view('wrapper', $data);
+        $this->pdf->load_view($data['content'], $data);
     }
 }

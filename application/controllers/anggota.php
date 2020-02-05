@@ -53,6 +53,7 @@ class Anggota extends HSM_Conttroller
         $data['list_anggota'] = $this->anggota_model->get_all_anggota();
         $data['page_js'] = 'page/anggota/page_js';
 
-        $this->pdf->load_view('wrapper', $data);
+        //$this->pdf->load_view('wrapper', $data);
+        $this->pdf->load_view($data['content'], $data);
     }
 }

@@ -156,7 +156,7 @@ class event extends HSM_Conttroller
         $data['list_event'] = $this->event_model->get_all_event();
         $data['page_js'] = 'page/event/page_js';
 
-        $this->pdf->load_view('wrapper', $data);
+        $this->pdf->load_view($data['content'], $data);
         
     }
 }

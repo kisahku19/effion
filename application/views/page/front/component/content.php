@@ -5,7 +5,7 @@
         </div>
    <?php }
 ?>
-<div class="services-wrap">
+<div class="services-wrap" style="margin-bottom:30px">
 	<div class="container no-padding">
         <?php
         if ($content) {

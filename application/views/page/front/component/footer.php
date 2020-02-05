@@ -11,7 +11,7 @@
 				
 				<!-- Contact info -->
 
-				<div class="col-md-3 footer-widget">
+				<div class="col-md-12 footer-widget">
 
 					<!-- Newsletter -->
 				
@@ -20,8 +20,8 @@
 						<h5>Ikuti Kami</h5>
 						<div class="col-md-12 no-padding">
 							<ul class="social-top">
-								<li class="instagram"><a href="http://instagram.com/komunitasyoutuber" target="blank">Instagram</a></li>
-								<li class="youtube"><a href="http://youtube.com/channel/UCHkzM0ALR9NUNEmvN85GzLA" target="blank">Youtube</a></li>
+								<li class="instagram"><a href="http://instagram.com/komunitasyoutuber" target="blank"><img src="<?=base_url()?>/assets/images/instagram.png" width="30px"> Instagram </a></li>
+								<li class="youtube"><a href="http://youtube.com/channel/UCHkzM0ALR9NUNEmvN85GzLA" target="blank"><img src="<?=base_url()?>/assets/images/instagram.png" width="30px"> Youtube</a></li>
 							</ul>
 					
 						</div>

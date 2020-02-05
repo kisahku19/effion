@@ -515,22 +515,22 @@ class Front extends CI_Controller
         redirect('front/member_area/' . $_SESSION['nama_lengkap'], 'refresh');
     }
 
-    private function badwords($string)
-    {
-        $badWords = array("suck", "tai", "anjing", "goblok", "bangsat", "babi", "fuck");
+    // private function badwords($string)
+    // {
+    //     $badWords = array("suck", "tai", "anjing", "goblok", "bangsat", "babi", "fuck");
 
-        $matches = array();
-        $matchFound = preg_match_all(
-            "/(" . implode($badWords, "|") . ")/i",
-            $string,
-            $matches
-        );
-        $words = array();
-        if ($matchFound) {
-            $words = array_unique($matches[0]);
-            return implode(",", $words);
-        } else {
-            return false;
-        }
+    //     $matches = array();
+    //     $matchFound = preg_match_all(
+    //         "/(" . implode($badWords, "|") . ")/i",
+    //         $string,
+    //         $matches
+    //     );
+    //     $words = array();
+    //     if ($matchFound) {
+    //         $words = array_unique($matches[0]);
+    //         return implode(",", $words);
+    //     } else {
+    //         return false;
+    //     }
     }
 }

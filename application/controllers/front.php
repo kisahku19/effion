@@ -532,5 +532,5 @@ class Front extends CI_Controller
     //     } else {
     //         return false;
     //     }
-    }
+    //}
 }

@@ -33,6 +33,7 @@ class Anggota_model extends CI_Model{
     }
 
     function delete_anggota($id){
+        $this->db->query('SET foreign_key_checks = 0');
         $this->db->where('id_anggota', $id);
         if ($this->db->delete('anggota')) {
             return true;

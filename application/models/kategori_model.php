@@ -33,6 +33,7 @@ class Kategori_model extends CI_Model{
     }
 
     function delete_kategori($id){
+        $this->db->query('SET foreign_key_checks = 0');
         $this->db->where('id_kategori', $id);
         if ($this->db->delete('kategori')) {
             return true;

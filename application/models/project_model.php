@@ -47,6 +47,7 @@ class Project_model extends CI_Model{
      }
      
      function delete_project($id){
+        $this->db->query('SET foreign_key_checks = 0');
          $this->db->where('id_project', $id);
          if ($this->db->delete('project')) {
              return true;
@@ -56,6 +57,7 @@ class Project_model extends CI_Model{
      }
 
      function delete_komentar($id){
+        $this->db->query('SET foreign_key_checks = 0');
         $this->db->where('id_komentar_project', $id);
         if ($this->db->delete('komentar_project')) {
             return true;

@@ -47,6 +47,7 @@ class Training_model extends CI_Model{
      }
      
      function delete_training($id){
+        $this->db->query('SET foreign_key_checks = 0');
          $this->db->where('id_training', $id);
          if ($this->db->delete('training')) {
              return true;

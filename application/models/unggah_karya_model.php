@@ -51,6 +51,7 @@ class Unggah_karya_model extends CI_Model{
      }
      
      function delete_unggah_karya($id){
+        $this->db->query('SET foreign_key_checks = 0');
          $this->db->where('id_karya', $id);
          if ($this->db->delete('unggah_karya')) {
              return true;

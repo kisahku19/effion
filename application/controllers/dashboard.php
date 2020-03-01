@@ -28,21 +28,4 @@ class Dashboard extends HSM_Conttroller
         
         $this->load->view('wrapper', $data);
     }
-
-    // function dashboard_wali()
-    // {
-    //     $data['title'] = 'Dashboard Wali Murid';
-    //     $data['content'] = 'page/dashboard/dashboard_wali_view';
-    //     $data['info_wali'] = $this->wali->get_wali_by_kd_wali($this->session->userdata('username'));
-    //     $data['info_siswa'] = $this->siswa->get_siswa_by_kd_wali($this->session->userdata('username'));
-        
-    //     $this->load->view('wrapper', $data);
-    // }
-
-    // function dashboard_siswa()
-    // {
-    //     $data['title'] = 'Dashboard';
-    //     $data['content'] = 'page/dashboard/dashboard_view';
-    //     $this->load->view('wrapper', $data);
-    // }
 }

@@ -44,6 +44,5 @@ foreach($all_event as $key=>$val){
 </div>
 <?php } ?>
 
-             
 
 

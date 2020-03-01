@@ -28,6 +28,7 @@
                 <td>
                     Username : <?= $detail_info->username ?>
                 </td>
+                <!-- <a href="<?= base_url()?>front/form_edit_karya/<?= $value->id_karya?>" class="btn btn-primary">Update Karya</a> -->
             </tr>
         </table>
     </div>
@@ -56,7 +57,7 @@ src="<?= $value->video?>">
                     
                 </p>
                 <div class="btn-group">
-                    <!-- <a href="<?= base_url()?>front/form_edit_karya/<?= $value->id_karya?>" class="btn btn-primary">Edit</a> -->
+                    <a href="<?= base_url()?>front/form_edit_karya/<?= $value->id_karya?>" class="btn btn-primary">Update Karya</a>
                     <!-- <a href="<?= base_url()?>front/hapus_karya/<?= $value->id_karya?>" class="btn btn-danger">Hapus</a> -->
                 </div>
 			</div>

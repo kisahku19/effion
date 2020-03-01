@@ -96,13 +96,13 @@ class event extends HSM_Conttroller
                 if ($this->event_model->insert_event($data_arr)) {
                     $id_event = $this->db->insert_id();
                     //create forum for comment
-                    $this->forum_model->insert_forum($data_forum);
-                    $id_forum = $this->db->insert_id();
+                    //$this->forum_model->insert_forum($data_forum);
+                    //$id_forum = $this->db->insert_id();
                     //end create forum for comment
 
                     //update add forum_id to event table
-                    $data_update = array('id_forum' => $id_forum);
-                    $this->event_model->update_event($id_event, $data_update);
+                    //$data_update = array('id_forum' => $id_forum);
+                    //$this->event_model->update_event($id_event, $data_update);
                     //end update add forum_id to event table
 
                     $this->session->set_flashdata('pesan', 'Event berhasil di tambahkan');

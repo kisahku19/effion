@@ -1,6 +1,6 @@
 <h2 style="text-align: center;">Login Anggota</h2>
 
-<div class="row" style="min-height:165px">
+<div class="row" style="min-height:245px">
     <div class="col-md-12 no-padding">
         <?php
         if (isset($_SESSION['error'])) {?>
